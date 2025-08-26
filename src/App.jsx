@@ -142,20 +142,24 @@ const Metric = ({ value, label }) => (
 const ExperienceCard = ({ item }) => (
   <Card className="rounded-2xl shadow-sm">
     <CardHeader className="pb-2">
-      <CardTitle className="text-lg flex items-center justify-between">
+      <CardTitle className="text-lg flex items-center justify-between gap-3">
         <span className="font-semibold">{item.company}</span>
-        <Badge variant="secondary" className="ml-2 hidden sm:inline-flex">{item.role}</Badge>
+        <Badge variant="secondary" className="ml-auto">{item.role}</Badge>
       </CardTitle>
-      <div className="text-sm text-muted-foreground flex items-center gap-2 mt-1">
+
+      <div className="text-sm text-muted-foreground flex items-center gap-2 mt-2">
         <Calendar size={16} />
         <span>{item.period}</span>
       </div>
+
+      {/* tags on their own row */}
       <div className="flex flex-wrap gap-2 mt-3">
         {item.tags?.map((t) => (
-          <Badge key={t} variant="outline">{t}</Badge>
+          <Badge key={t} variant={t === "Design Systems" ? "blue" : "soft"}>{t}</Badge>
         ))}
       </div>
     </CardHeader>
+
     <CardContent className="space-y-2 text-sm">
       {item.bullets.map((b, i) => (
         <div key={i} className="flex gap-2">
@@ -170,14 +174,12 @@ const ExperienceCard = ({ item }) => (
 const ProjectCard = ({ p }) => (
   <Card className="rounded-2xl shadow-sm h-full">
     <CardHeader>
-      <CardTitle className="text-base flex items-center justify-between">
-        <span>{p.title}</span>
-        <div className="flex gap-2">
-          {p.tags.map((t) => (
-            <Badge key={t} variant="outline">{t}</Badge>
-          ))}
-        </div>
-      </CardTitle>
+      <CardTitle className="text-base">{p.title}</CardTitle>
+      <div className="flex gap-2 flex-wrap justify-end mt-2">
+        {p.tags.map((t) => (
+          <Badge key={t} variant={t === "Design Systems" ? "blue" : "soft"}>{t}</Badge>
+        ))}
+      </div>
     </CardHeader>
     <CardContent className="text-sm text-muted-foreground">
       {p.summary}
@@ -190,20 +192,19 @@ export default function Portfolio() {
     <div className="min-h-screen bg-background text-foreground">
       {/* Header / Hero */}
       <header className="sticky top-0 z-30 bg-background/70 backdrop-blur border-b">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+        <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <Layers className="text-primary" />
             <span className="font-semibold">{PROFILE.name}</span>
           </div>
           <div className="flex items-center gap-2">
-            <Button variant="ghost" asChild>
+            <Button variant="secondary" asChild>   {/* light pill */}
               <a href={`mailto:${PROFILE.email}`}>
                 <Mail className="mr-2 h-4 w-4" /> Contact
               </a>
             </Button>
-            {/* TODO: wire to your hosted PDF */}
-            <Button asChild>
-              <a href="/RafaelFlores-Resume.pdf" aria-label="Download resume (PDF)">
+            <Button asChild>                        {/* dark pill */}
+              <a href="#" aria-label="Download resume (PDF)">
                 <Download className="mr-2 h-4 w-4" /> Resume
               </a>
             </Button>
@@ -211,16 +212,16 @@ export default function Portfolio() {
         </div>
       </header>
 
-      <main>
+      <main className="rf-container">
         {/* Intro */}
         <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
           <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}>
             <h1 className="text-3xl sm:text-4xl font-bold tracking-tight mb-2">{PROFILE.title}</h1>
             <p className="text-muted-foreground max-w-3xl">{PROFILE.summary}</p>
             <div className="flex flex-wrap gap-2 mt-4">
-              <Badge><Sparkles className="h-3.5 w-3.5 mr-1" /> Design Systems</Badge>
-              <Badge variant="secondary"><Cpu className="h-3.5 w-3.5 mr-1" /> AI‑assisted Ops</Badge>
-              <Badge variant="outline"><ShieldCheck className="h-3.5 w-3.5 mr-1" /> A11y & Content</Badge>
+              <Badge variant="blue"><Sparkles className="h-3.5 w-3.5 mr-1" /> Design Systems</Badge>
+              <Badge variant="soft"><Cpu className="h-3.5 w-3.5 mr-1" /> AI-assisted Ops</Badge>
+              <Badge variant="soft"><ShieldCheck className="h-3.5 w-3.5 mr-1" /> A11y & Content</Badge>
             </div>
           </motion.div>
 
@@ -262,7 +263,7 @@ export default function Portfolio() {
 
         {/* Projects */}
         <Section id="projects" title="Selected Projects — Wealth • Health • Systems • A11y • Content" icon={<Cpu className="text-primary" /> }>
-          <Tabs defaultValue="all" className="w-full">
+          <Tabs defaultValue="all" tone="blue" className="w-full">
             <TabsList>
               <TabsTrigger value="all">All</TabsTrigger>
               <TabsTrigger value="wealth">Wealth</TabsTrigger>
@@ -317,31 +318,33 @@ export default function Portfolio() {
         </Section>
 
         <Separator />
-
-        {/* Contact / Footer */}
-        <Section id="contact" title="Get in touch" icon={<Mail className="text-primary" /> }>
-          <Card className="rounded-2xl shadow-sm">
-            <CardContent className="p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-              <div>
-                <div className="text-lg font-semibold">Let’s build simple, trustworthy experiences in wealth & health.</div>
-                <p className="text-sm text-muted-foreground">Open to Director/Sr Director roles • Remote (Americas/ET)</p>
-              </div>
-              <div className="flex gap-2">
-                <Button asChild>
-                  <a href={`mailto:${PROFILE.email}`}>
-                    <Mail className="mr-2 h-4 w-4" /> Email Rafael
-                  </a>
-                </Button>
-                <Button variant="secondary" asChild>
-                  <a href="/RafaelFlores-Resume.pdf" aria-label="View resume (PDF)">
-                    <Download className="mr-2 h-4 w-4" /> Resume
-                  </a>
-                </Button>
-              </div>
-            </CardContent>
-          </Card>
-          <p className="text-xs text-muted-foreground mt-4">© {new Date().getFullYear()} Rafael Flores. All rights reserved.</p>
-        </Section>
+        
+        <footer className="rf-container py-10 text-sm text-gray-600">
+          {/* Contact / Footer */}
+          <Section id="contact" title="Get in touch" icon={<Mail className="text-primary" /> }>
+            <Card className="rounded-2xl shadow-sm">
+              <CardContent className="p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                <div>
+                  <div className="text-lg font-semibold">Let’s build simple, trustworthy experiences in wealth & health.</div>
+                  <p className="text-sm text-muted-foreground">Open to Director/Sr Director roles • Remote (Americas/ET)</p>
+                </div>
+                <div className="flex gap-2">
+                  <Button asChild>
+                    <a href={`mailto:${PROFILE.email}`}>
+                      <Mail className="mr-2 h-4 w-4" /> Email Rafael
+                    </a>
+                  </Button>
+                  <Button variant="secondary" asChild>
+                    <a href="/RafaelFlores-Resume.pdf" aria-label="View resume (PDF)">
+                      <Download className="mr-2 h-4 w-4" /> Resume
+                    </a>
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+            <p className="text-xs text-muted-foreground mt-4">© {new Date().getFullYear()} Rafael Flores. All rights reserved.</p>
+          </Section>
+        </footer>
       </main>
     </div>
   );

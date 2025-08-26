@@ -1,9 +1,16 @@
-export function Badge({ variant = 'default', className = '', children }) {
-  const base = 'inline-flex items-center rounded-full px-2.5 py-1 text-xs font-medium border'
+import React from "react";
+
+export function Badge({ variant = "soft", className = "", children, ...props }) {
   const variants = {
-    default: 'bg-black text-white border-transparent',
-    secondary: 'bg-gray-100 text-gray-900 border-gray-200',
-    outline: 'bg-white text-gray-900 border-gray-300',
-  }
-  return <span className={`${base} ${variants[variant] || variants.default} ${className}`}>{children}</span>
+    soft: "rf-badge",                 // light grey
+    blue: "rf-badge rf-badge--blue",  // light blue
+    secondary: "rf-badge secondary",  // (kept for pills on white)
+    outline: "rf-badge outline",
+  };
+  const classes = `${variants[variant] || variants.soft} ${className}`;
+  return (
+    <span className={classes} {...props}>
+      {children}
+    </span>
+  );
 }

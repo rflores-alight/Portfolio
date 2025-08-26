@@ -1,20 +1,39 @@
-import React from 'react'
-const Ctx = React.createContext(null)
-export function Tabs({ defaultValue, className='', children }) {
-  const [value, setValue] = React.useState(defaultValue)
-  return <Ctx.Provider value={{ value, setValue }}><div className={className}>{children}</div></Ctx.Provider>
+import React, { createContext, useContext, useState } from "react";
+
+const Ctx = createContext();
+
+export function Tabs({ defaultValue, tone = "grey", className = "", children }) {
+  const [value, setValue] = useState(defaultValue);
+  return (
+    <Ctx.Provider value={{ value, setValue, tone }}>
+      <div className={className}>{children}</div>
+    </Ctx.Provider>
+  );
 }
-export function TabsList({ children }) {
-  return <div className="inline-flex gap-1 rounded-xl border p-1">{children}</div>
+
+export function TabsList({ className = "", children }) {
+  const { tone } = useContext(Ctx);
+  return <div className={`rf-tabs ${tone === "blue" ? "rf-tabs--blue" : ""} ${className}`}>{children}</div>;
 }
-export function TabsTrigger({ value, children }) {
-  const { value:cur, setValue } = React.useContext(Ctx)
-  const active = cur===value
-  const base='px-3 py-1.5 text-sm rounded-lg'
-  return <button onClick={()=>setValue(value)} className={`${base} ${active?'bg-black text-white':'bg-white text-gray-900 hover:bg-gray-50'}`}>{children}</button>
+
+export function TabsTrigger({ value, className = "", children }) {
+  const { value: sel, setValue } = useContext(Ctx);
+  const active = sel === value;
+  return (
+    <button
+      type="button"
+      className={`rf-tab ${active ? "active" : ""} ${className}`}
+      onClick={() => setValue(value)}
+      aria-selected={active}
+      role="tab"
+    >
+      {children}
+    </button>
+  );
 }
-export function TabsContent({ value, className='', children }) {
-  const { value:cur } = React.useContext(Ctx)
-  if (cur!==value) return null
-  return <div className={className}>{children}</div>
+
+export function TabsContent({ value, className = "", children }) {
+  const { value: sel } = useContext(Ctx);
+  if (sel !== value) return null;
+  return <div className={className}>{children}</div>;
 }
