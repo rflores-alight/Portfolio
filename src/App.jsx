@@ -218,7 +218,13 @@ export default function Portfolio() {
         {/* Intro */}
         <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
           <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}>
-            <h1 className="text-3xl sm:text-4xl font-bold tracking-tight mb-2">{PROFILE.title}</h1>
+            <h1 className="text-3xl sm:text-5xl font-bold tracking-tight leading-tight">
+              {PROFILE.title}
+            </h1>
+
+            <p className="text-lg sm:text-2xl font-semibold text-muted-foreground/90 mt-1">
+              {PROFILE.subtitle}
+            </p>
             <p className="text-muted-foreground max-w-3xl">{PROFILE.summary}</p>
             <div className="flex flex-wrap gap-2 mt-4">
               <Badge variant="blue"><Sparkles className="h-3.5 w-3.5 mr-1" /> Design Systems</Badge>
