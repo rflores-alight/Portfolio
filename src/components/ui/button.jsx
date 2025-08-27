@@ -3,7 +3,7 @@ import React from 'react'
 export function Button({
   variant = 'default',
   asChild = false,
-  className = '',
+  className = 'cursor-pointer',
   children,
   ...props
 }) {
