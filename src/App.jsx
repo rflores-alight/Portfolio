@@ -40,7 +40,9 @@ const CORE_STRENGTHS = [
 const EXPERIENCE = [
   {
     company: "Alight Solutions",
-    role: "Product Design Director — Design Systems & Accessibility",
+    //role: "Product Design Director — Design Systems & Accessibility",
+    roleTitle: "Product Design Director",
+    roleSub: "Design Systems & A11y",
     period: "2021 – Aug 2025 • Remote",
     bullets: [
       "Owned end‑to‑end design & a11y; aligned discovery with PMs.",
@@ -55,7 +57,7 @@ const EXPERIENCE = [
   },
   {
     company: "BMO Financial Group",
-    role: "User Experience Team Lead",
+    roleTitle: "User Experience Team Lead",
     period: "Jan 2019 – Nov 2020 • Chicago",
     bullets: [
       "Led a cross‑functional UX team across retail & business banking (Web/iOS/Android).",
@@ -66,7 +68,7 @@ const EXPERIENCE = [
   },
   {
     company: "Walgreens (Contract)",
-    role: "Senior Product/Interaction Designer",
+    roleTitle: "Senior Product/Interaction Designer",
     period: "Feb 2018 – Dec 2018 • Chicago",
     bullets: [
       "Drove mobile standards and engineering rituals to raise delivery quality & speed for consumer health/retail experiences.",
@@ -75,7 +77,7 @@ const EXPERIENCE = [
   },
   {
     company: "Earlier Roles",
-    role: "UX & Engineering",
+    roleTitle: "UX & Engineering",
     period: "—",
     bullets: [
       "American College of Surgeons: clinician‑facing data workflows (NCDB).",
@@ -165,37 +167,94 @@ const Metric = ({ value, label }) => {
   );
 };
 
-const ExperienceCard = ({ item }) => (
-  <Card className="rounded-2xl shadow-sm">
-    <CardHeader className="pb-2">
-      <CardTitle className="text-lg flex items-center justify-between gap-3">
-        <span className="font-semibold">{item.company}</span>
-        <Badge variant="secondary" className="ml-auto">{item.role}</Badge>
-      </CardTitle>
+const RoleChip = ({ title, sub, className = "" }) => (
+  <>
+    {/* Desktop/tablet: small content-hugging pill on the right */}
+    <div
+      className={`hidden sm:inline-flex flex-col items-start w-fit
+                  rounded-full border bg-muted/40 px-4 py-2 text-sm leading-tight
+                  text-foreground ${className}`}
+    >
+      <span className="font-medium">{title}</span>
+      {sub ? <span className="text-muted-foreground">{sub}</span> : null}
+    </div>
 
-      <div className="text-sm text-muted-foreground flex items-center gap-2 mt-2">
-        <Calendar size={16} />
-        <span>{item.period}</span>
-      </div>
-
-      {/* tags on their own row */}
-      <div className="flex flex-wrap gap-2 mt-3">
-        {item.tags?.map((t) => (
-          <Badge key={t} variant={t === "Design Systems" ? "blue" : "soft"}>{t}</Badge>
-        ))}
-      </div>
-    </CardHeader>
-
-    <CardContent className="space-y-2 text-sm">
-      {item.bullets.map((b, i) => (
-        <div key={i} className="flex gap-2">
-          <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-primary" />
-          <p>{b}</p>
-        </div>
-      ))}
-    </CardContent>
-  </Card>
+    {/* Mobile: show the same pill under the company name */}
+    <div
+      className="sm:hidden mt-2 inline-flex flex-col items-start w-fit
+                 rounded-full border bg-muted/40 px-4 py-2 text-sm leading-tight
+                 text-foreground"
+    >
+      <span className="font-medium">{title}</span>
+      {sub ? <span className="text-muted-foreground">{sub}</span> : null}
+    </div>
+  </>
 );
+
+
+const RolePill = ({ title, sub }) => (
+  <div className="rounded-full border px-4 py-2 text-sm bg-background shadow-sm
+                  text-foreground/90 flex flex-wrap items-center gap-x-2 leading-tight max-w-full">
+    <span className="whitespace-nowrap font-medium">{title}</span>
+
+    {sub && (
+      <>
+        {/* Desktop/tablet: keep on same line with a dot */}
+        <span className="hidden sm:inline whitespace-nowrap shrink-0 text-muted-foreground
+                         ">
+          {sub}
+        </span>
+
+        {/* Mobile: force the entire phrase to the next line (no dot) */}
+        <span className="inline sm:hidden basis-full whitespace-nowrap shrink-0 text-muted-foreground">
+          {sub}
+        </span>
+      </>
+    )}
+  </div>
+);
+
+const ExperienceCard = ({ item }) => {
+  const roleText = item.roleTitle
+    ? `${item.roleTitle}${item.roleSub ? " — " + item.roleSub : ""}`
+    : (item.role || "");
+
+  return (
+    <Card className="rounded-2xl shadow-sm">
+      <CardHeader className="pb-2">
+        <CardTitle className="text-lg flex items-center justify-between gap-3">
+          <span className="font-semibold">{item.company}</span>
+          <RoleChip
+          title={item.roleTitle || (item.role?.split(" — ")[0] ?? "")}
+          sub={item.roleSub || (item.role?.split(" — ")[1] ?? "")}
+          className="ml-auto"
+        />
+        </CardTitle>
+
+        <div className="text-sm text-muted-foreground flex items-center gap-2 mt-1">
+          <Calendar size={16} />
+          <span>{item.period}</span>
+        </div>
+
+        <div className="flex flex-wrap gap-2 mt-3">
+          {item.tags?.map((t) => (
+            <Badge key={t} variant="secondary">{t}</Badge>
+          ))}
+        </div>
+      </CardHeader>
+
+      <CardContent className="space-y-2 text-sm">
+        {item.bullets.map((b, i) => (
+          <div key={i} className="flex gap-2">
+            <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-primary" />
+            <p>{b}</p>
+          </div>
+        ))}
+      </CardContent>
+    </Card>
+  );
+};
+
 
 const ProjectCard = ({ p }) => (
   <Card className="rounded-2xl shadow-sm h-full">
