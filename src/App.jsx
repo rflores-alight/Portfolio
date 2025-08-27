@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { Mail, Download, ShieldCheck, Layers, Sparkles, Cpu, Briefcase, Calendar } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
+import { Pill } from "@/components/ui/pill";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Separator } from "@/components/ui/separator";
 
@@ -193,26 +193,18 @@ const RoleChip = ({ title, sub, className = "" }) => (
 
 
 const RolePill = ({ title, sub }) => (
-  <div className="rounded-full border px-4 py-2 text-sm bg-background shadow-sm
-                  text-foreground/90 flex flex-wrap items-center gap-x-2 leading-tight max-w-full">
-    <span className="whitespace-nowrap font-medium">{title}</span>
-
-    {sub && (
-      <>
-        {/* Desktop/tablet: keep on same line with a dot */}
-        <span className="hidden sm:inline whitespace-nowrap shrink-0 text-muted-foreground
-                         ">
-          {sub}
-        </span>
-
-        {/* Mobile: force the entire phrase to the next line (no dot) */}
-        <span className="inline sm:hidden basis-full whitespace-nowrap shrink-0 text-muted-foreground">
-          {sub}
-        </span>
-      </>
-    )}
-  </div>
-);
+   <div className="inline-flex max-w-full flex-col rounded-full px-4 py-2
+                   bg-background ring-1 ring-foreground/15 shadow-sm">
+     <span className="text-sm font-semibold leading-tight text-foreground">
+       {title}
+     </span>
+     {sub && (
+       <span className="text-sm leading-tight text-muted-foreground">
+         {sub}
+       </span>
+     )}
+   </div>
+ );
 
 const ExperienceCard = ({ item }) => {
   const roleText = item.roleTitle
@@ -224,12 +216,16 @@ const ExperienceCard = ({ item }) => {
       <CardHeader className="pb-2">
         <CardTitle className="text-lg flex items-center justify-between gap-3">
           <span className="font-semibold">{item.company}</span>
-          <RoleChip
-          title={item.roleTitle || (item.role?.split(" — ")[0] ?? "")}
-          sub={item.roleSub || (item.role?.split(" — ")[1] ?? "")}
-          className="ml-auto"
-        />
+          {/* Desktop pill (soft) */}
+          <Pill variant="soft" size="sm" className="hidden sm:inline-flex">
+            <span className="flex flex-col items-start leading-tight">
+              <span className="font-semibold">{item.roleTitle}</span>
+              <span className="text-muted-foreground">{item.roleSub}</span>
+            </span>
+          </Pill>
         </CardTitle>
+
+       
 
         <div className="text-sm text-muted-foreground flex items-center gap-2 mt-1">
           <Calendar size={16} />
@@ -238,7 +234,7 @@ const ExperienceCard = ({ item }) => {
 
         <div className="flex flex-wrap gap-2 mt-3">
           {item.tags?.map((t) => (
-            <Badge key={t} variant="secondary">{t}</Badge>
+            <Pill key={t} variant="outline" size="sm">{t}</Pill>
           ))}
         </div>
       </CardHeader>
@@ -260,9 +256,9 @@ const ProjectCard = ({ p }) => (
   <Card className="rounded-2xl shadow-sm h-full">
     <CardHeader>
       <CardTitle className="text-base">{p.title}</CardTitle>
-      <div className="flex gap-2 flex-wrap justify-end mt-2">
+      <div className="flex gap-2 flex-wrap justify-left mt-2">
         {p.tags.map((t) => (
-          <Badge key={t} variant={t === "Design Systems" ? "blue" : "soft"}>{t}</Badge>
+          <Pill key={t} variant="outline" size="sm">{t}</Pill>
         ))}
       </div>
     </CardHeader>
@@ -314,9 +310,9 @@ export default function Portfolio() {
               {PROFILE.summary}
             </p>
             <div className="flex flex-wrap gap-2 mt-4">
-              <Badge variant="blue"><Sparkles className="h-3.5 w-3.5 mr-1" /> Design Systems</Badge>
-              <Badge variant="soft"><Cpu className="h-3.5 w-3.5 mr-1" /> AI-assisted Ops</Badge>
-              <Badge variant="soft"><ShieldCheck className="h-3.5 w-3.5 mr-1" /> A11y & Content</Badge>
+              <Pill variant="primary" size="sm" icon={Sparkles}>Design Systems</Pill>
+              <Pill variant="soft" size="sm" icon={Cpu}>AI-assisted Ops</Pill>
+              <Pill variant="outline" size="sm" icon={ShieldCheck}>A11y & Content</Pill>
             </div>
           </motion.div>
 
