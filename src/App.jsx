@@ -42,7 +42,7 @@ const EXPERIENCE = [
     role: "Product Design Director — Design Systems & Accessibility",
     period: "2021 – Aug 2025 • Remote",
     bullets: [
-      "Owned end‑to‑end design & research; built a searchable research repository; aligned discovery with PMs.",
+      "Owned end‑to‑end design & a11y; aligned discovery with PMs.",
       "Scaled a cross‑platform Design System (tokens/Variables, versioning/deprecation, release trains) aligned to Figma ↔ Storybook ↔ Zeroheight with CI & visual regression.",
       "Standardized states for trust‑critical flows (accounts, contributions, payouts, statements); embedded WCAG 2.1/2.2; late‑stage defects ↓50%.",
       "Instrumented CSAT/NPS, adoption, error/defect rate, time‑to‑merge; maintained a delivery calendar aligned to release trains.",
@@ -78,7 +78,8 @@ const EXPERIENCE = [
     period: "—",
     bullets: [
       "American College of Surgeons: clinician‑facing data workflows (NCDB).",
-      "Hyatt (Lead Mobile Product Designer), Manifest (Sr Experience Designer).",
+      "Hyatt (Lead Mobile Product Designer).",
+      "Manifest (Sr Experience Designer).",
       "InnerWorkings (Lead UX).",
       "TandemSeven (UX) — wealth clients incl. Goldman Sachs & JPMorgan.",
       "Shure (GUI Software Engineer).",
