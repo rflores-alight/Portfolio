@@ -20,7 +20,7 @@ const PROFILE = {
     { label: "Late‑stage defects", value: "↓ 50%" },
     { label: "DS component adoption", value: "~50%" },
     { label: "Design→Dev lead time", value: "↓ 30%" },
-    { label: "Research cadence", value: "2 studies/quarter" },
+    { label: "Research cadence", value: ["2", "studies/quarter"] },
   ],
 };
 
@@ -125,7 +125,10 @@ const PROJECTS = [
 const Section = ({ id, title, subtitle, icon, children }) => (
   <section id={id} className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
     <div className="flex items-start gap-3 mb-6">
-      {icon}
+      {/* Icon wrapper keeps a consistent size + subtle vertical nudge */}
+      <div className="shrink-0 mt-0.5">
+        {React.cloneElement(icon, { className: "h-7 w-7 text-primary" })}
+      </div>
       <div>
         <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight leading-tight">
           {title}
@@ -141,14 +144,26 @@ const Section = ({ id, title, subtitle, icon, children }) => (
   </section>
 );
 
-const Metric = ({ value, label }) => (
-  <Card className="rounded-2xl shadow-sm">
-    <CardContent className="p-6">
-      <div className="text-3xl font-semibold mb-1">{value}</div>
-      <div className="text-sm text-muted-foreground">{label}</div>
-    </CardContent>
-  </Card>
-);
+const Metric = ({ value, label }) => {
+  const isTuple = Array.isArray(value);
+  return (
+    <Card className="rounded-2xl shadow-sm">
+      <CardContent className="p-6">
+        {isTuple ? (
+          <>
+            <div className="text-4xl font-semibold leading-tight">{value[0]}</div>
+            <div className="text-2xl font-semibold leading-tight md:whitespace-nowrap">
+              {value[1]}
+            </div>
+          </>
+        ) : (
+          <div className="text-3xl font-semibold mb-1">{value}</div>
+        )}
+        <div className="text-sm text-muted-foreground">{label}</div>
+      </CardContent>
+    </Card>
+  );
+};
 
 const ExperienceCard = ({ item }) => (
   <Card className="rounded-2xl shadow-sm">
@@ -231,10 +246,14 @@ export default function Portfolio() {
               {PROFILE.title}
             </h1>
 
-            <p className="text-lg sm:text-2xl font-semibold text-muted-foreground/90 mt-1">
-              {PROFILE.subtitle}
+            {PROFILE.subtitle && (
+              <div className="text-xl sm:text-2xl font-semibold tracking-tight mt-1 sm:mt-2 text-foreground">
+                {PROFILE.subtitle}
+              </div>
+            )}
+            <p className="text-muted-foreground max-w-3xl mt-3 sm:mt-4">
+              {PROFILE.summary}
             </p>
-            <p className="text-muted-foreground max-w-3xl">{PROFILE.summary}</p>
             <div className="flex flex-wrap gap-2 mt-4">
               <Badge variant="blue"><Sparkles className="h-3.5 w-3.5 mr-1" /> Design Systems</Badge>
               <Badge variant="soft"><Cpu className="h-3.5 w-3.5 mr-1" /> AI-assisted Ops</Badge>
@@ -242,7 +261,7 @@ export default function Portfolio() {
             </div>
           </motion.div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-4 mt-8">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-4 mt-8">
             {PROFILE.highlights.map((m) => (
               <Metric key={m.label} value={m.value} label={m.label} />
             ))}
