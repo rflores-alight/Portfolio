@@ -204,7 +204,7 @@ export default function Portfolio() {
               </a>
             </Button>
             <Button asChild>                        {/* dark pill */}
-              <a href="#" aria-label="Download resume (PDF)">
+              <a href="/RafaelFlores-Resume.pdf" aria-label="Download resume (PDF)">
                 <Download className="mr-2 h-4 w-4" /> Resume
               </a>
             </Button>
