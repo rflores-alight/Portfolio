@@ -10,7 +10,8 @@ import { Separator } from "@/components/ui/separator";
 // === Generic Portfolio Content (Wealth • Health • Design Systems • A11y • Content) ===
 const PROFILE = {
   name: "Rafael Flores",
-  title: "Director, Product Design — Platforms: Wealth, Health & Systems",
+  title: "Director, Product Design",
+  subtitle: "Platforms: Wealth, Health & Systems",
   email: "ralf.flores@gmail.com",
   summary:
     "Design leader (15+ yrs) who owns product design end‑to‑end—strategy, systems, and execution. I build high‑leverage teams, scale Design Systems, and ship trusted, mobile‑first experiences across Web/iOS/Android. My work spans wealth (retirement/benefits, money movement), health (clinician & member journeys), and platform enablement (content governance, accessibility, research ops). Recent focus: AI‑assisted quality tooling (LLM drift detection, internal dev chatbot) and Figma automation for faster, safer delivery.",
