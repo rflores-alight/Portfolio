@@ -204,7 +204,7 @@ export default function Portfolio() {
               </a>
             </Button>
             <Button asChild>                        {/* dark pill */}
-              <a href="/RafaelFlores-Resume.pdf" aria-label="Download resume (PDF)">
+              <a href="/RafaelFlores-Resume.pdf" target="_blank" rel="noopener" aria-label="Download resume (PDF)">
                 <Download className="mr-2 h-4 w-4" /> Resume
               </a>
             </Button>
@@ -335,7 +335,7 @@ export default function Portfolio() {
                     </a>
                   </Button>
                   <Button variant="secondary" asChild>
-                    <a href="/RafaelFlores-Resume.pdf" aria-label="View resume (PDF)">
+                    <a href="/RafaelFlores-Resume.pdf" target="_blank" rel="noopener" aria-label="View resume (PDF)">
                       <Download className="mr-2 h-4 w-4" /> Resume
                     </a>
                   </Button>
