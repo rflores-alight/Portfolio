@@ -122,11 +122,20 @@ const PROJECTS = [
   },
 ];
 
-const Section = ({ id, title, icon, children }) => (
+const Section = ({ id, title, subtitle, icon, children }) => (
   <section id={id} className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-    <div className="flex items-center gap-3 mb-6">
+    <div className="flex items-start gap-3 mb-6">
       {icon}
-      <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight">{title}</h2>
+      <div>
+        <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight leading-tight">
+          {title}
+        </h2>
+        {subtitle && (
+          <p className="text-sm sm:text-base text-muted-foreground mt-0.5">
+            {subtitle}
+          </p>
+        )}
+      </div>
     </div>
     {children}
   </section>
@@ -270,7 +279,11 @@ export default function Portfolio() {
         <Separator />
 
         {/* Projects */}
-        <Section id="projects" title="Selected Projects — Wealth • Health • Systems • A11y • Content" icon={<Cpu className="text-primary" /> }>
+        <Section 
+          id="projects" 
+          title="Selected Projects" 
+          subtitle="Wealth • Health • Systems • A11y • Content"
+          icon={<Cpu className="text-primary" /> }>
           <Tabs defaultValue="all" tone="blue" className="w-full">
             <TabsList>
               <TabsTrigger value="all">All</TabsTrigger>
