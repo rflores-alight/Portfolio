@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { Mail, Download, ShieldCheck, Layers, Sparkles, Cpu, Briefcase, Calendar } from "lucide-react";
+import { Mail, Download, ShieldCheck, Layers, Sparkles, Cpu, Briefcase, Calendar, Lightbulb } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Pill } from "@/components/ui/pill";
@@ -685,7 +685,7 @@ export default function Portfolio() {
           id="case-studies"
           title="Case Studies"
           subtitle="Deeper dives into Wealth, Health, Design Systems, A11y & Content"
-          icon={<Cpu className="text-primary" />}
+          icon={<Lightbulb className="text-primary" />}
         >
         <div className="grid md:grid-cols-2 gap-5">
           {CASE_STUDIES.map(cs => (
@@ -714,7 +714,7 @@ export default function Portfolio() {
         </Section>
 
         <Separator />
-        
+
         <footer className="rf-container py-10 text-sm text-gray-600">
           {/* Contact / Footer */}
           <Section id="contact" title="Get in touch" icon={<Mail className="text-primary" /> }>
