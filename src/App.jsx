@@ -172,7 +172,7 @@ const CASE_STUDIES = [
       author: "Eng Director"
     },
     lessons: [
-      "Quality gates must be paired with clear migration guides.",
+      "Ship more predictably and with fewer rollbacks.",
       "Dashboards beat docs for changing behavior."
     ]
   },
@@ -222,7 +222,7 @@ const CASE_STUDIES = [
       author: "Me"
     },
     lessons: [
-      "Start with safety rails (modes, flags, kill-switch) before optimizing speed.",
+      "Takes the emotions out of live trading.",
       "Treat observability as a product feature, not a dev nicety."
     ]
   }
