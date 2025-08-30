@@ -81,11 +81,11 @@ const EXPERIENCE = [
     roleTitle: "UX & Engineering",
     period: "—",
     bullets: [
-      "American College of Surgeons: clinician‑facing data workflows (NCDB).",
       "Hyatt (Lead Mobile Product Designer).",
       "Manifest (Sr Experience Designer).",
       "InnerWorkings (Lead UX).",
       "TandemSeven (UX) — wealth clients incl. Goldman Sachs & JPMorgan.",
+      "American College of Surgeons: clinician‑facing data workflows (NCDB).",
       "Shure (GUI Software Engineer).",
     ],
     tags: ["Health", "Wealth", "Mobile", "UX Eng"],
@@ -215,7 +215,11 @@ const CASE_STUDIES = [
     ],
     artifacts: [
       { src: "/case-studies/automation-arch.png", caption: "High-level architecture & data flow" },
-      { src: "/case-studies/ops-console.svg", caption: "Ops console mockup with job history & replay" },
+      {
+        src: "/case-studies/bmo-patterns.png",
+        caption: "Account summary pattern.",
+        aspect: "aspect-[9/16]"   // ← tall phone screenshot
+      },
     ],
     quote: {
       text: "This takes the emotions out of live trading.",
@@ -224,6 +228,50 @@ const CASE_STUDIES = [
     lessons: [
       "Takes the emotions out of live trading.",
       "Treat observability as a product feature, not a dev nicety."
+    ]
+  },
+  {
+    slug: "bmo-design-strategy",
+    title: "Design Strategy & Innovation: Raising Mobile Quality at BMO",
+    subtitle: "Wealth • Money Movement • Design Strategy",
+    summary:
+      "Led UX for money-movement & servicing; research-backed sprints and DS governance improved quality and app ratings.",
+    tags: ["Wealth", "Banking", "Design Systems"],
+    hero: "/case-studies/bmo-hero.png",
+    context: {
+      role: "User Experience Team Lead",
+      team: "Cross-functional UX with 2 ICs; partnered closely with PM & Eng",
+      timeframe: "2019–2020",
+      constraints: [
+        "Regulatory/compliance requirements",
+        "Multiple platforms (Web/iOS/Android)",
+        "Legacy patterns/components"
+      ]
+    },
+    problem:
+      "Inconsistent patterns and unclear content in high-trust flows (money movement, servicing) created friction and contributed to poor mobile ratings.",
+    approach: [
+      "Vision workshops and design sprints with research to align on a North Star and test quickly.",
+      "Mapped end-to-end journeys and failure modes; clarified disclosures and trust-critical content.",
+      "Established design-system governance (tokens/Variables) and a11y standards; partnered with engineering on component APIs and quality gates.",
+      "Set a recurring review cadence across PM/Design/Eng to keep quality bars visible."
+    ],
+    built: [
+      "Unified money-movement patterns (limits, error/recovery, review/undo).",
+      "Content standards and microcopy for trust-critical moments.",
+      "Design-system guardrails and contribution model; migration guides.",
+      "Mobile standards across iOS/Android; cross-surface coherence."
+    ],
+    metrics: [
+      { label: "Mobile app rating", after: "↑ 2.2 → 4.2" }
+    ],
+    artifacts: [
+      { src: "/case-studies/bmo-journey-map.png", caption: "Journey map." },
+      { src: "/case-studies/bmo-screen.png", caption: "Account summary pattern." }
+    ],
+    lessons: [
+      "Research-backed content is as critical as UI for money movement.",
+      "Design-system guardrails accelerate consistency without slowing teams."
     ]
   }
 ];
@@ -245,7 +293,12 @@ const CaseStudyCard = ({ cs, onOpenModal }) => (
     </CardHeader>
 
     <CardContent>
-      <Button variant="secondary" size="sm" onClick={() => onOpenModal(cs)}>
+      <Button
+        variant="secondary"
+        size="sm"
+        className="cursor-pointer"
+        onClick={() => onOpenModal(cs)}
+      >
         Read case study
       </Button>
     </CardContent>
@@ -317,9 +370,9 @@ const CaseStudyModal = ({ cs, onClose }) => (
                   className="rounded-xl overflow-hidden ring-1 ring-foreground/10"
                 >
                   <div
-                    className="relative bg-muted/20 aspect-[4/3]"
-                    // fallback if you don't have Tailwind's aspect utilities:
-                    // style={{ aspectRatio: "4 / 3" }}
+                    className={`relative bg-muted/20 ${a.aspect || "aspect-[4/3]"}`}
+                    // If you don't have Tailwind aspect-ratio plugin, uncomment:
+                    // style={!a.aspect ? { aspectRatio: "4 / 3" } : undefined}
                   >
                     <img
                       src={a.src}
