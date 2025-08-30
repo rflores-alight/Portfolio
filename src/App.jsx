@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { Mail, Download, ShieldCheck, Layers, Sparkles, Cpu, Briefcase, Calendar, Lightbulb } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -7,6 +7,22 @@ import { Pill } from "@/components/ui/pill";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import { Separator } from "@/components/ui/separator";
 import Artifact from "@/components/Artifact";
+
+// helper to render images with a graceful fallback
+function SafeImage({ src, alt, className }) {
+  const [ok, setOk] = React.useState(Boolean(src));
+  if (!ok || !src) return null;
+  return (
+    <img
+      src={src}
+      alt={alt}
+      loading="lazy"
+      decoding="async"
+      onError={() => setOk(false)}
+      className={className}
+    />
+  );
+}
 
 // === Generic Portfolio Content (Wealth • Health • Design Systems • A11y • Content) ===
 const PROFILE = {
@@ -306,19 +322,48 @@ const CaseStudyCard = ({ cs, onOpenModal }) => (
 );
 
 // Lightweight modal (no extra libs)
-const CaseStudyModal = ({ cs, onClose }) => (
-  <div className="fixed inset-0 z-50 flex items-start sm:items-center justify-center bg-black/50">
-    <div className="bg-background w-full max-w-3xl max-h-[92vh] overflow-y-auto rounded-2xl shadow-2xl m-4">
+const CaseStudyModal = ({ cs, onClose }) => {
+  const dialogRef = useRef(null);
+  useEffect(() => {
+    // focus first focusable element
+    const el = dialogRef.current;
+    const focusables = el?.querySelectorAll(
+      'a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])'
+    );
+    focusables?.[0]?.focus();
+    const onKey = (e) => {
+      if (e.key === "Escape") onClose();
+      if (e.key === "Tab" && focusables?.length) {
+        const first = focusables[0];
+        const last = focusables[focusables.length - 1];
+        if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+        else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+      }
+    };
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [onClose]);
+
+  return (
+  <div className="fixed inset-0 z-50 flex items-start sm:items-center justify-center bg-black/50"
+       role="dialog" aria-modal="true" aria-labelledby={`cs-${cs.slug}-title`}>
+    <div ref={dialogRef} className="bg-background w-full max-w-3xl max-h-[92vh] overflow-y-auto rounded-2xl shadow-2xl m-4">
       <div className="p-6">
         <div className="flex items-start justify-between gap-4">
           <div>
-            <h3 className="text-xl font-semibold">{cs.title}</h3>
+            <h3 id={`cs-${cs.slug}-title`} className="text-xl font-semibold">{cs.title}</h3>
             <p className="text-sm text-muted-foreground">{cs.subtitle}</p>
           </div>
           <Button variant="secondary" onClick={onClose}>Close</Button>
         </div>
 
-        {cs.hero && <img src={cs.hero} alt="" className="mt-4 rounded-xl ring-1 ring-foreground/10" />}
+        {cs.hero ? (
+          <SafeImage
+            src={cs.hero}
+            alt={`${cs.title} — hero`}
+            className="mt-4 rounded-xl ring-1 ring-foreground/10"
+          />
+        ) : null}
 
         {/* Context */}
         <div className="mt-6 grid sm:grid-cols-3 gap-4">
@@ -374,11 +419,9 @@ const CaseStudyModal = ({ cs, onClose }) => (
                     // If you don't have Tailwind aspect-ratio plugin, uncomment:
                     // style={!a.aspect ? { aspectRatio: "4 / 3" } : undefined}
                   >
-                    <img
-                      src={a.src}
-                      alt={a.caption}
-                      className="absolute inset-0 h-full w-full object-contain"
-                    />
+                    <img src={a.src} alt={a.caption}
+                         loading="lazy" decoding="async"
+                         className="absolute inset-0 h-full w-full object-contain" />
                   </div>
                   <figcaption className="text-xs text-muted-foreground p-2">
                     {a.caption}
@@ -402,7 +445,7 @@ const CaseStudyModal = ({ cs, onClose }) => (
     </div>
   </div>
 );
-
+};
 const Section = ({ id, title, subtitle, icon, children }) => (
   <section id={id} className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
     <div className="flex items-start gap-3 mb-6">
@@ -561,6 +604,7 @@ function LightboxModal({ open, src, alt, onClose }) {
       <img
         src={src}
         alt={alt || ""}
+        loading="lazy" decoding="async"
         className="max-h-[85vh] max-w-[92vw] rounded-xl shadow-2xl object-contain"
         onClick={(e) => e.stopPropagation()}
       />
@@ -586,6 +630,7 @@ export default function Portfolio() {
 
   const openCaseStudy = (cs) => {
     setActiveCS(cs);
+    document.body.style.overflow = "hidden";
     const params = new URLSearchParams(window.location.hash.slice(1));
     params.set("cs", cs.slug);
     window.history.replaceState(null, "", `#${params.toString()}`);
@@ -593,6 +638,7 @@ export default function Portfolio() {
 
   const closeCaseStudy = () => {
     setActiveCS(null);
+    document.body.style.overflow = "";
     const params = new URLSearchParams(window.location.hash.slice(1));
     params.delete("cs");
     const suffix = params.toString();
