@@ -215,11 +215,7 @@ const CASE_STUDIES = [
     ],
     artifacts: [
       { src: "/case-studies/automation-arch.png", caption: "High-level architecture & data flow" },
-      {
-        src: "/case-studies/bmo-patterns.png",
-        caption: "Account summary pattern.",
-        aspect: "aspect-[9/16]"   // ← tall phone screenshot
-      },
+      { src: "/case-studies/ops-console.svg", caption: "Ops console mockup with job history & replay" },
     ],
     quote: {
       text: "This takes the emotions out of live trading.",
@@ -266,8 +262,12 @@ const CASE_STUDIES = [
       { label: "Mobile app rating", after: "↑ 2.2 → 4.2" }
     ],
     artifacts: [
-      { src: "/case-studies/bmo-journey-map.png", caption: "Journey map." },
-      { src: "/case-studies/bmo-screen.png", caption: "Account summary pattern." }
+      { src: "/case-studies/bmo-journey-map.png", caption: "Journey map, omnichannel" },
+      {
+        src: "/case-studies/bmo-screen.png",
+        caption: "Account summary pattern",
+        aspect: "aspect-[9/16]"   // ← tall phone screenshot
+      }
     ],
     lessons: [
       "Research-backed content is as critical as UI for money movement.",
