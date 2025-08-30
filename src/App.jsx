@@ -349,12 +349,15 @@ const CaseStudyModal = ({ cs, onClose }) => {
        role="dialog" aria-modal="true" aria-labelledby={`cs-${cs.slug}-title`}>
     <div ref={dialogRef} className="bg-background w-full max-w-3xl max-h-[92vh] overflow-y-auto rounded-2xl shadow-2xl m-4">
       <div className="p-6">
-        <div className="flex items-start justify-between gap-4">
+          {/* Sticky header keeps title + Close visible while scrolling */}
+          <div className="sticky top-0 z-20 -mx-6 -mt-6 px-6 py-4
+                          bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60
+                          border-b rounded-t-2xl flex items-start justify-between gap-4">
           <div>
             <h3 id={`cs-${cs.slug}-title`} className="text-xl font-semibold">{cs.title}</h3>
             <p className="text-sm text-muted-foreground">{cs.subtitle}</p>
           </div>
-          <Button variant="secondary" onClick={onClose}>Close</Button>
+          <Button variant="secondary" onClick={onClose} aria-label="Close case study">Close</Button>
         </div>
 
         {cs.hero ? (
