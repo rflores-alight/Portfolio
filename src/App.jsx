@@ -289,6 +289,53 @@ const CASE_STUDIES = [
       "Research-backed content is as critical as UI for money movement.",
       "Design-system guardrails accelerate consistency without slowing teams."
     ]
+  },
+  {
+    slug: "global-collab-research",
+    title: "Culture & Collaborative Software",
+    subtitle: "Global user research comparing two organizations",
+    summary:
+      "Mixed-methods study—on-site observations, interviews, and Hofstede’s VSM08—to understand how culture shapes the way teams adopt and adapt collaboration tools.",
+    tags: ["Research", "Culture", "Collaboration"],
+    hero: "/case-studies/collab-hero.png", // optional cover image
+    context: {
+      role: "Lead Researcher (Graduate)",
+      team: "Solo with faculty advisement",
+      timeframe: "One semester",
+      constraints: [
+        "Small N (two orgs; two employees each)",
+        "Cross-cultural sensitivity & confidentiality"
+      ],
+    },
+    problem:
+      "Organizations with different cultures were adopting the same collaboration platforms, but outcomes varied. We needed to understand how cultural values influenced collaboration norms, tool configuration, and practices.",
+    approach: [
+      "Planned a mixed-methods study and obtained consent/approvals.",
+      "Conducted contextual observation in two organizations; interviewed two employees at each (semi-structured).",
+      "Administered Hofstede’s VSM08 survey; scored cultural dimensions to compare orgs.",
+      "Coded interview transcripts; triangulated qualitative themes with VSM08 scores.",
+      "Synthesized implications for adapting collaborative software to local norms."
+    ],
+    built: [
+      "Study protocol & interview guide",
+      "VSM08 survey administration & scoring workbook",
+      "Affinity map & coded themes",
+      "Recommendations for configuration, onboarding, and governance"
+    ],
+    // optional: no quantitative product metrics for this academic study
+    artifacts: [
+      { src: "/case-studies/collab-slides.png", caption: "Presentation cover (findings & implications)" },
+      { src: "/case-studies/collab-paper.png",  caption: "Paper cover (methods & results)" }
+    ],
+    resources: [
+      { label: "Collaborative Technologies Presentation", href: "/case-studies/HCI514CollaborativeTechnologies.pdf" },
+      { label: "Collaborative Technologies Paper",       href: "/case-studies/CollaborativeTechnologiesFinal.pdf" }
+    ],
+    lessons: [
+      "Tools reflect and reinforce local cultural norms—configure, don’t copy-paste practices.",
+      "Pair platform rollouts with culture-aware onboarding and governance.",
+      "Quant (VSM08) + qual (interviews/observation) yields more actionable guidance than either alone."
+    ]
   }
 ];
 
@@ -324,6 +371,10 @@ const CaseStudyCard = ({ cs, onOpenModal }) => (
 // Lightweight modal (no extra libs)
 const CaseStudyModal = ({ cs, onClose }) => {
   const dialogRef = useRef(null);
+  // Keep only artifacts that actually have a src
+  const validArtifacts = (cs.artifacts || []).filter(
+    a => typeof a.src === "string" && a.src.trim() !== ""
+  );
   useEffect(() => {
     // focus first focusable element
     const el = dialogRef.current;
@@ -407,12 +458,12 @@ const CaseStudyModal = ({ cs, onClose }) => {
           </div>
         ) : null}
 
-        {/* Artifacts (consistent tiles, no stretch) */}
-        {cs.artifacts?.length ? (
+        {/* Artifacts (only if we have valid images) */}
+        {validArtifacts.length > 0 ? (
           <div className="mt-6">
             <h4 className="font-semibold">Artifacts</h4>
             <div className="mt-2 grid sm:grid-cols-2 gap-3">
-              {cs.artifacts.map((a, i) => (
+              {validArtifacts.map((a, i) => (
                 <figure
                   key={i}
                   className="rounded-xl overflow-hidden ring-1 ring-foreground/10"
@@ -422,14 +473,44 @@ const CaseStudyModal = ({ cs, onClose }) => {
                     // If you don't have Tailwind aspect-ratio plugin, uncomment:
                     // style={!a.aspect ? { aspectRatio: "4 / 3" } : undefined}
                   >
-                    <img src={a.src} alt={a.caption}
-                         loading="lazy" decoding="async"
-                         className="absolute inset-0 h-full w-full object-contain" />
+                    <img
+                      src={a.src}
+                      alt={a.caption || ""}
+                      loading="lazy"
+                      decoding="async"
+                      className="absolute inset-0 h-full w-full object-contain"
+                      onError={(e) => {
+                        // Hide the figure if the image can't load
+                        const fig = e.currentTarget.closest("figure");
+                        if (fig) fig.style.display = "none";
+                      }}
+                    />
                   </div>
                   <figcaption className="text-xs text-muted-foreground p-2">
                     {a.caption}
                   </figcaption>
                 </figure>
+              ))}
+            </div>
+          </div>
+        ) : null}
+
+        {/* Resources / Links */}
+        {cs.resources?.length ? (
+          <div className="mt-6">
+            <h4 className="font-semibold">Resources</h4>
+            <div className="mt-2 flex flex-wrap gap-2">
+              {cs.resources.map((r, i) => (
+                <Button
+                  key={i}
+                  variant="secondary"
+                  asChild
+                  className="cursor-pointer"
+                >
+                  <a href={r.href} target="_blank" rel="noopener noreferrer">
+                    {r.label}
+                  </a>
+                </Button>
               ))}
             </div>
           </div>
