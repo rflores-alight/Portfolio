@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
-import { Mail, Download, ShieldCheck, Layers, Sparkles, Cpu, Briefcase, Calendar, Lightbulb } from "lucide-react";
+import { Mail, Download, ShieldCheck, Layers, Sparkles, Cpu, Briefcase, Calendar, Lightbulb, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Pill } from "@/components/ui/pill";
@@ -408,7 +408,16 @@ const CaseStudyModal = ({ cs, onClose }) => {
             <h3 id={`cs-${cs.slug}-title`} className="text-xl font-semibold">{cs.title}</h3>
             <p className="text-sm text-muted-foreground">{cs.subtitle}</p>
           </div>
-          <Button variant="secondary" onClick={onClose} aria-label="Close case study">Close</Button>
+          <Button
+            variant="ghost"
+            size="icon"
+            onClick={onClose}
+            aria-label="Close case study dialog"
+            className="rounded-full ring-1 ring-foreground/10 hover:ring-foreground/20 cursor-pointer"
+          >
+            <X className="h-5 w-5" aria-hidden="true" />
+            <span className="sr-only">Close</span>Close
+          </Button>
         </div>
 
         {cs.hero ? (
