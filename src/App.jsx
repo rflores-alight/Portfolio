@@ -280,9 +280,8 @@ const CASE_STUDIES = [
     artifacts: [
       { src: "/case-studies/bmo-journey-map.png", caption: "Journey map, omnichannel" },
       {
-        src: "/case-studies/bmo-screen.png",
-        caption: "Account summary pattern",
-        aspect: "aspect-[9/16]"   // ← tall phone screenshot
+        src: "/case-studies/bmo-2up-combined.png",
+        caption: "Account summary + transfer flow"
       }
     ],
     lessons: [
@@ -478,7 +477,7 @@ const CaseStudyModal = ({ cs, onClose }) => {
                   className="rounded-xl overflow-hidden ring-1 ring-foreground/10"
                 >
                   <div
-                    className={`relative bg-muted/20 ${a.aspect || "aspect-[4/3]"}`}
+                    className="relative bg-muted/20 aspect-[4/3] sm:aspect-[16/10] rounded-lg"
                     // If you don't have Tailwind aspect-ratio plugin, uncomment:
                     // style={!a.aspect ? { aspectRatio: "4 / 3" } : undefined}
                   >
@@ -487,7 +486,7 @@ const CaseStudyModal = ({ cs, onClose }) => {
                       alt={a.caption || ""}
                       loading="lazy"
                       decoding="async"
-                      className="absolute inset-0 h-full w-full object-contain"
+                      className="absolute inset-0 h-full w-full object-contain p-2"
                       onError={(e) => {
                         // Hide the figure if the image can't load
                         const fig = e.currentTarget.closest("figure");
