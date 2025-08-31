@@ -148,7 +148,7 @@ const CASE_STUDIES = [
     title: "Cutting late-stage defects with Design System guardrails",
     subtitle: "Wealth • Design Systems • A11y",
     summary:
-      "We reduced late-stage defects ~50% in a regulated wealth platform by instrumenting DS guardrails, a11y, and a sprint cadence.",
+      "We reduced late-stage defects ~50% in a regulated benadmin platform by instrumenting DS guardrails, a11y, and a sprint cadence.",
     tags: ["Wealth", "Design Systems", "A11y"],
     hero: "/case-studies/wealth-hero.png", // put images in /public/case-studies
     context: {
