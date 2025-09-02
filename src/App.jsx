@@ -203,7 +203,7 @@ const CASE_STUDIES = [
     hero: "/case-studies/automation-hero.png",
     context: {
       role: "Product Design Director / Builder",
-      team: "Myself",
+      team: "Solo",
       timeframe: "4 months",
       constraints: [
         "3rd-party API limits & reliability",
