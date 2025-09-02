@@ -340,7 +340,46 @@ const CASE_STUDIES = [
       "Pair platform rollouts with culture-aware onboarding and governance.",
       "Quant (VSM08) + qual (interviews/observation) yields more actionable guidance than either alone."
     ]
-  }
+  },
+  {
+  slug: "curb-appeal",
+  title: "Curb Appeal — Street Food Finder (Graduate Project)",
+  subtitle: "Marketplace • Mobile • Research-first",
+  summary:
+    "A research-driven mobile concept that helps people discover nearby food trucks and helps vendors communicate location, hours, and menus.",
+  tags: ["Early Work", "Research", "Mobile", "Marketplace"],
+  hero: "/case-studies/curb-appeal-hero.png",
+  context: {
+    role: "Research lead & Interaction designer",
+    team: "4 grad students",
+    timeframe: "6 weeks"
+  },
+  problem:
+    "Discovery was fragmented: patrons couldn’t reliably find who was nearby and open; vendors lacked simple ways to signal location and availability.",
+  approach: [
+    "Semi-structured interviews with patrons and vendors + an online survey",
+    "Competitive scan of early food-truck apps to identify gaps",
+    "Requirements → personas → conceptual models → group sketches/wireframes",
+    "Prototype to test discover → evaluate → navigate"
+  ],
+  built: [
+    "Mobile IA with availability cues (open/closed, hours, location confidence)",
+    "Detail view with concise content (menu preview, distance, ETA)",
+    "Map hand-off for ‘navigate to truck’"
+  ],
+  // keep metrics out (academic project); the modal hides this if empty
+  metrics: [],
+  artifacts: [
+  ],
+  resources: [
+    { label: "Prototype (Vimeo)", href: "https://vimeo.com/24522436" }
+  ],
+  lessons: [
+    "Multi-sided platforms live or die on state clarity (availability, location confidence).",
+    "Small, repeatable research loops beat assumptions—use them to shape requirements.",
+    "Prototype the decision path, not just the UI—discover → evaluate → navigate."
+  ]
+}
 ];
 
 // KPI row used inside the modal
