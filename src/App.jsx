@@ -77,9 +77,11 @@ const EXPERIENCE = [
     roleTitle: "User Experience Team Lead",
     period: "Jan 2019 – Nov 2020 • Chicago",
     bullets: [
-      "Led a cross‑functional UX team across retail & business banking (Web/iOS/Android).",
+      "Led cross-functional UX for retail & business banking across Web/iOS/Android; owned experience architecture for money movement and servicing.",
       "Owned experience architecture for money movement & servicing; facilitated vision workshops/design sprints.",
       "Established design‑system governance (tokens/Variables, content & accessibility guidelines); partnered with engineering on component APIs & quality gates.",
+      "Shipped unified patterns for limits, error/recovery, and review/undo in high-trust flows.",
+      "Contributed to raising the mobile app rating from ~2.2 → ~4.2 on the app stores.",
     ],
     tags: ["Wealth", "Banking", "Design Systems"],
   },
@@ -89,6 +91,8 @@ const EXPERIENCE = [
     period: "Feb 2018 – Dec 2018 • Chicago",
     bullets: [
       "Drove mobile standards and engineering rituals to raise delivery quality & speed for consumer health/retail experiences.",
+      "Established patterns and review cadences that reduced rework and improved consistency across iOS/Android.",
+      "Partnered closely with engineering to harden component APIs and acceptance criteria.",
     ],
     tags: ["Health", "Mobile"],
   },
