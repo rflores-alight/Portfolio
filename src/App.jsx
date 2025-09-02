@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
-import { Mail, Download, ShieldCheck, Layers, Sparkles, Cpu, Briefcase, Calendar, Lightbulb, X } from "lucide-react";
+import { Mail, Download, ShieldCheck, Layers, Sparkles, Cpu, Briefcase, Calendar, Lightbulb, X, Linkedin} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Pill } from "@/components/ui/pill";
@@ -30,6 +30,7 @@ const PROFILE = {
   title: "Director, Product Design",
   subtitle: "Platforms: Wealth, Health & Systems",
   email: "ralf.flores@gmail.com",
+  linkedin: "https://www.linkedin.com/in/flashflores/",
   summary:
     "Design leader (15+ yrs) who owns product design end‑to‑end—strategy, systems, and execution. I build high‑leverage teams, scale Design Systems, and ship trusted, mobile‑first experiences across Web/iOS/Android. My work spans wealth (retirement/benefits, money movement), health (clinician & member journeys), and platform enablement (content governance, accessibility, research ops). Recent focus: AI‑assisted quality tooling (LLM drift detection, internal dev chatbot) and Figma automation for faster, safer delivery.",
   highlights: [
@@ -923,6 +924,16 @@ export default function Portfolio() {
                   <Button asChild>
                     <a href={`mailto:${PROFILE.email}`}>
                       <Mail className="mr-2 h-4 w-4" /> Email Rafael
+                    </a>
+                  </Button>
+                  {/* Footer LinkedIn button (shows on all viewports) */}
+                  <Button variant="secondary" size="icon" asChild>
+                    <a href={PROFILE.linkedin}
+                       target="_blank"
+                       rel="noopener me"
+                       aria-label="LinkedIn (opens in a new tab)">
+                      <Linkedin className="h-6 w-6 text-[#0A66C2]" aria-hidden="true" />
+                      <span className="sr-only">LinkedIn</span>
                     </a>
                   </Button>
                   <Button variant="secondary" asChild>
