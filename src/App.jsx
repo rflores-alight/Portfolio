@@ -328,8 +328,7 @@ const CASE_STUDIES = [
     ],
     // optional: no quantitative product metrics for this academic study
     artifacts: [
-      { src: "/case-studies/collab-slides.png", caption: "Presentation cover (findings & implications)" },
-      { src: "/case-studies/collab-paper.png",  caption: "Paper cover (methods & results)" }
+      
     ],
     resources: [
       { label: "Collaborative Technologies Presentation", href: "/case-studies/HCI514CollaborativeTechnologies.pdf" },
