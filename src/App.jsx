@@ -375,9 +375,9 @@ const CASE_STUDIES = [
     { label: "Prototype (Vimeo)", href: "https://vimeo.com/24522436" }
   ],
   lessons: [
-    "Multi-sided platforms live or die on state clarity (availability, location confidence).",
-    "Small, repeatable research loops beat assumptions—use them to shape requirements.",
-    "Prototype the decision path, not just the UI—discover → evaluate → navigate."
+    "Clarity wins: Real-time open/closed, last updated location, and wait time build trust on both sides.",
+    "Loop, don’t leap: Weekly 5-user tests + field intercepts beat assumptions and directly refine requirements.",
+    "Design the decision: Prototype the discover → evaluate → navigate path so users can choose fast and confidently."
   ]
 }
 ];
