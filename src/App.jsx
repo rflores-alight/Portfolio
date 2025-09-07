@@ -27,12 +27,15 @@ function SafeImage({ src, alt, className }) {
 // === Generic Portfolio Content (Wealth • Health • Design Systems • A11y • Content) ===
 const PROFILE = {
   name: "Rafael Flores",
-  title: "Director, Product Design",
-  subtitle: "Platforms: Wealth, Health & Systems",
+  title: "Director of Product Design",
+  subtitle: "AI, Platforms & Design Systems",
   email: "ralf.flores@gmail.com",
   linkedin: "https://www.linkedin.com/in/flashflores/",
-  summary:
-    "Design leader (15+ yrs) who owns product design end‑to‑end—strategy, systems, and execution. I build high‑leverage teams, scale Design Systems, and ship trusted, mobile‑first experiences across Web/iOS/Android. My work spans wealth (retirement/benefits, money movement), health (clinician & member journeys), and platform enablement (content governance, accessibility, research ops). Recent focus: AI‑assisted quality tooling (LLM drift detection, internal dev chatbot) and Figma automation for faster, safer delivery.",
+  summary: (
+    <>
+      I lead teams that turn complex, regulated workflows into trustworthy, measurable experiences across Web/iOS/Android. I’ve merged legacy systems, embedded accessibility and content standards, and used AI to raise craft without slowing teams - <strong>late-stage defects ↓50%</strong>, <strong>design→dev lead time ↓30%</strong>, <strong>component adoption ~50%</strong>. Current work spans AI-assisted quality tooling (drift detection, linting, internal DS chatbot) and DS modernization (tokens/Variables, release trains).
+    </>
+  ),
   highlights: [
     { label: "Designers coached", value: "20" },
     { label: "Late‑stage defects", value: "↓ 50%" },
@@ -63,15 +66,15 @@ const EXPERIENCE = [
     roleSub: "Design Systems & A11y",
     period: "2021 – Aug 2025 • Remote",
     bullets: [
+      "AI strategy: LLM drift detection in Slack/design guidance; internal dev chatbot; Figma plugin to lint tokens/variants & accessibility rules.",
       "Owned end‑to‑end design & a11y; aligned discovery with PMs.",
       "Scaled a cross‑platform Design System (tokens/Variables, versioning/deprecation, release trains) aligned to Figma ↔ Storybook ↔ Zeroheight with CI & visual regression.",
       "Standardized states for trust‑critical flows (accounts, contributions, payouts, statements); embedded WCAG 2.1/2.2; late‑stage defects ↓50%.",
       "Instrumented CSAT/NPS, adoption, error/defect rate, time‑to‑merge; maintained a delivery calendar aligned to release trains.",
       "Partnered with Product, Engineering & BA counterparts; design→dev lead time ↓30%; component adoption ~50%.",
-      "AI acceleration: LLM drift detection in Slack/design guidance; internal dev chatbot; Figma plugin to lint tokens/variants & accessibility rules.",
       "Content governance: voice/tone, microcopy & disclosure patterns; release notes & migration guides in DS.",
     ],
-    tags: ["Design Systems", "Accessibility", "AI", "Content"],
+    tags: ["AI", "Design Systems", "Accessibility", "Content"],
   },
   {
     company: "BMO Financial Group",
@@ -822,7 +825,7 @@ export default function Portfolio() {
             </p>
             <div className="flex flex-wrap gap-2 mt-4">
               <Pill variant="primary" size="sm" icon={Sparkles}>Design Systems</Pill>
-              <Pill variant="soft" size="sm" icon={Cpu}>AI-assisted Ops</Pill>
+              <Pill variant="soft" size="sm" icon={Cpu}>AI Strategy</Pill>
               <Pill variant="outline" size="sm" icon={ShieldCheck}>A11y & Content</Pill>
             </div>
           </motion.div>
