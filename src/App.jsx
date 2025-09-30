@@ -64,7 +64,7 @@ const EXPERIENCE = [
     //role: "Product Design Director — Design Systems & Accessibility",
     roleTitle: "Product Design Director",
     roleSub: "Design Systems & A11y",
-    period: "2021 – Aug 2025 • Remote",
+    period: "2021 – 2025 • Remote",
     bullets: [
       "AI strategy: LLM drift detection in Slack/design guidance; internal dev chatbot; Figma plugin to lint tokens/variants & accessibility rules.",
       "Owned end‑to‑end design & a11y; aligned discovery with PMs.",
@@ -79,7 +79,7 @@ const EXPERIENCE = [
   {
     company: "BMO Financial Group",
     roleTitle: "User Experience Team Lead",
-    period: "Jan 2019 – Nov 2020 • Chicago",
+    period: "2019 – 2020 • Chicago",
     bullets: [
       "Led cross-functional UX for retail & business banking across Web/iOS/Android; owned experience architecture for money movement and servicing.",
       "Owned experience architecture for money movement & servicing; facilitated vision workshops/design sprints.",
@@ -92,7 +92,7 @@ const EXPERIENCE = [
   {
     company: "Walgreens (Contract)",
     roleTitle: "Senior Product/Interaction Designer",
-    period: "Feb 2018 – Dec 2018 • Chicago",
+    period: "2018 – 2018 • Chicago",
     bullets: [
       "Drove mobile standards and engineering rituals to raise delivery quality & speed for consumer health/retail experiences.",
       "Established patterns and review cadences that reduced rework and improved consistency across iOS/Android.",
@@ -103,7 +103,7 @@ const EXPERIENCE = [
   {
     company: "Earlier Roles",
     roleTitle: "UX & Engineering",
-    period: "—",
+    period: "2007 — 2018",
     bullets: [
       "Hyatt (Lead Mobile Product Designer).",
       "Manifest (Sr Experience Designer).",
