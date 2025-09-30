@@ -91,7 +91,7 @@ const EXPERIENCE = [
   },
   {
     company: "Walgreens (Contract)",
-    roleTitle: "Senior Product/Interaction Designer",
+    roleTitle: "Senior Mobile Product/Interaction Designer",
     period: "2018 – 2018 • Chicago",
     bullets: [
       "Drove mobile standards and engineering rituals to raise delivery quality & speed for consumer health/retail experiences.",
@@ -107,9 +107,9 @@ const EXPERIENCE = [
     bullets: [
       "Hyatt (Lead Mobile Product Designer).",
       "Manifest (Sr Experience Designer).",
-      "InnerWorkings (Lead UX).",
-      "TandemSeven (UX) — wealth clients incl. Goldman Sachs & JPMorgan.",
-      "American College of Surgeons: clinician‑facing data workflows (NCDB).",
+      "InnerWorkings (Lead UX Designer).",
+      "TandemSeven (UX Designer) — wealth clients incl. Goldman Sachs & JPMorgan.",
+      "American College of Surgeons (UX Engineer): clinician‑facing data workflows for the National Cancer Data Base (NCDB).",
       "Shure (GUI Software Engineer).",
     ],
     tags: ["Health", "Wealth", "Mobile", "UX Eng"],
