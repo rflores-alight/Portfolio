@@ -211,7 +211,7 @@ const CASE_STUDIES = [
     hero: "/case-studies/automation-hero.png",
     context: {
       role: "Product Design Director / Builder",
-      team: "Solo",
+      team: "Individual Contributor (IC)",
       timeframe: "4 months",
       constraints: [
         "3rd-party API limits & reliability",
@@ -307,7 +307,7 @@ const CASE_STUDIES = [
     hero: "/case-studies/collab-hero.png", // optional cover image
     context: {
       role: "Lead Researcher (Graduate)",
-      team: "Solo with faculty advisement",
+      team: "Individual Contributor (IC) with faculty advisory",
       timeframe: "One semester",
       constraints: [
         "Small N (two orgs; two employees each)",
@@ -496,7 +496,7 @@ const CaseStudyModal = ({ cs, onClose }) => {
 
         {/* What we built */}
         <div className="mt-6">
-          <h4 className="font-semibold">What we built</h4>
+          <h4 className="font-semibold">What We Built</h4>
           <ul className="text-sm text-muted-foreground mt-1 space-y-1 list-disc pl-5">
             {cs.built.map((b, i) => <li key={i}>{b}</li>)}
           </ul>
@@ -573,7 +573,7 @@ const CaseStudyModal = ({ cs, onClose }) => {
         {/* Lessons */}
         {cs.lessons?.length ? (
           <div className="mt-6">
-            <h4 className="font-semibold">Lessons / Next</h4>
+            <h4 className="font-semibold">Key Takeaways</h4>
             <ul className="text-sm text-muted-foreground mt-1 list-disc pl-5 space-y-1">
               {cs.lessons.map((l, i) => <li key={i}>{l}</li>)}
             </ul>
@@ -699,14 +699,16 @@ const ExperienceCard = ({ item }) => {
         </div>
       </CardHeader>
 
-      <CardContent className="space-y-2 text-sm">
-        {item.bullets.map((b, i) => (
-          <div key={i} className="flex gap-2">
-            <span className="mt-1.5 h-1.5 w-1.5 rounded-full bg-primary" />
-            <p>{b}</p>
-          </div>
-        ))}
+      <CardContent className="text-sm leading-relaxed">
+        <ul className="list-disc list-outside pl-5 space-y-2 marker:text-primary">
+          {item.bullets.map((b, i) => (
+            <li key={i} className="pl-1 break-words">
+              {b}
+            </li>
+          ))}
+        </ul>
       </CardContent>
+
     </Card>
   );
 };
@@ -844,9 +846,10 @@ export default function Portfolio() {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
             {CORE_STRENGTHS.map((s) => (
               <Card key={s} className="rounded-2xl shadow-sm">
-                <CardContent className="p-5 text-sm flex items-start gap-3">
-                  <span className="mt-1.5 h-2 w-2 rounded-full bg-primary" />
-                  <span>{s}</span>
+                <CardContent className="p-5 text-sm leading-relaxed">
+                  <ul className="list-disc list-outside pl-5 marker:text-primary">
+                    <li className="pl-1 break-words">{s}</li>
+                  </ul>
                 </CardContent>
               </Card>
             ))}
