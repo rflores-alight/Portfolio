@@ -152,6 +152,69 @@ const PROJECTS = [
 // === Case Studies (story-first) ===
 const CASE_STUDIES = [
   {
+    slug: "ai-swing-coach",
+    title: "AI Swing Coach — simulate-first mobile trading with guardrails",
+    subtitle: "AI UX • Mobile • Trading",
+    summary:
+      "A 5-screen iOS prototype that helps swing traders act quickly and safely with simulate-first flows, explainability, and undo. Built in 3 days (Figma Make → refactor → DS). Builds upon my ML automation: TradingView → AWS → Alpaca case study.",
+    tags: ["AI UX", "Mobile", "Trading", "Design Systems", "A11y"],
+    hero: "/case-studies/ai-swing-coach/hero.png",
+
+    context: {
+      role: "Product Designer",
+      team: "Individual Contributor (IC) - paired with mock data",
+      timeframe: "3 days",
+      constraints: [
+        "TV → ML → Broker automation concept",
+        "iOS patterns, light/dark, a11y targets (44pt, contrast)",
+        "Prototype without real brokerage access"
+      ]
+    },
+
+    problem:
+      "Swing traders face noisy signals and risky execution. They need fast, explainable guidance with guardrails and reversibility, not big charts and guesswork.",
+
+    approach: [
+      "Ideated with Figma Make prompts, then refactored to Gestalt and Tufte principles (maximize data-ink).",
+      "Built components from the ground up (buttons, chips, stat cells, levels bar, inline banner) with file variables and instance-swap slots.",
+      "Modeled simulate-first flow with guardrails, probabilities, counterfactuals, and Undo.",
+      "Used a Shell layout + variables (no spaghetti links): activeTab, tradingMode, banner, nearState."
+    ],
+
+    built: [
+      "Screens: Signals, Positions, Alerts, Activity + Settings (Paper/Live, margin cap, model health).",
+      "Simulate sheet: TL;DR plan, guardrails with one-tap fixes, thin levels bar (SL·Entry·Now·TP), RR(entry·now), TP/SL probability ranges, ATR sensitivity, playbooks.",
+      "Positions cards with stateful CTAs (Near TP/SL), rules preview (Move SL→BE, Trail), and inline success banner with Undo.",
+      "Alert feedback loop (Late / Off-target / Noisy) and prioritization rationale.",
+      "Design system tokens: 12pt radius, 44–48pt targets, tabular figures, semantic colors, light/dark."
+    ],
+
+    metrics: [
+      { label: "Mode switch errors (Paper↔Live)", before: "—", after: "0 (guarded sheet)" },
+      { label: "Undo availability on critical actions", before: "—", after: "100% coverage" },
+      { label: "Guardrail coverage on risky actions", before: "—", after: "≥ 90% coverage" }, 
+      { label: "Prototype link count (spaghetti → variables)", before: "—", after: "−80–90%" },
+      { label: "Component reuse ratio (instances:masters)", before: "—", after: "≥ 12:1" }
+    ],
+
+     resources: [
+      { label: "Video: Signals → Simulate → Positions → Live Trade (hero flow)", href: "https://vimeo.com/1124281581/703d129d5a" },
+      { label: "Figma Prototype",       href: "https://www.figma.com/proto/TWAIpihUhIWRi2muQEmOSv/AI-Swing-Coach-App?node-id=1-2&t=2k8L0LPJ38Ocxqaz-1" },
+      { label: "Figma Design Source",       href: "https://www.figma.com/design/TWAIpihUhIWRi2muQEmOSv/AI-Swing-Coach-App?node-id=187-4329&t=2k8L0LPJ38Ocxqaz-1" }
+    ],
+    quote: {
+      text: "Guardrails + Undo let us move fast without regret; small numbers beat big charts for decisions.",
+      author: "Product Design Notes"
+    },
+
+    lessons: [
+      "Variables > spaghetti links for prototyping complex apps.",
+      "Explainability (drivers, ranges, counterfactuals) increases trust more than new charts.",
+      "Simulate-first with immediate Undo reduces risk while keeping speed."
+    ]
+  },
+
+  {
     slug: "wealth-ds-ops",
     title: "Cutting late-stage defects with Design System guardrails",
     subtitle: "Wealth • Design Systems • A11y",
