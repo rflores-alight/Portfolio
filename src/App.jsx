@@ -156,14 +156,14 @@ const CASE_STUDIES = [
     title: "AI Swing Coach — simulate-first mobile trading with guardrails",
     subtitle: "AI UX • Mobile • Trading",
     summary:
-      "A 5-screen iOS prototype that helps swing traders act quickly and safely with simulate-first flows, explainability, and undo. Built in 3 days (Figma Make → refactor → DS). Builds upon my ML automation: TradingView → AWS → Alpaca case study.",
+      "A 5-screen iOS prototype that helps swing traders act quickly and safely with simulate-first flows, explainability, and undo. Built in 5 days (Figma Make → refactor → DS). Builds upon my ML automation platform: TradingView → AWS → Alpaca case study.",
     tags: ["AI UX", "Mobile", "Trading", "Design Systems", "A11y"],
     hero: "/case-studies/ai-swing-coach/hero.png",
 
     context: {
       role: "Product Designer",
       team: "Individual Contributor (IC) - paired with mock data",
-      timeframe: "3 days",
+      timeframe: "5 days",
       constraints: [
         "TV → ML → Broker automation concept",
         "iOS patterns, light/dark, a11y targets (44pt, contrast)",
@@ -176,7 +176,7 @@ const CASE_STUDIES = [
 
     approach: [
       "Ideated with Figma Make prompts, then refactored to Gestalt and Tufte principles (maximize data-ink).",
-      "Built components from the ground up (buttons, chips, stat cells, levels bar, inline banner) with file variables and instance-swap slots.",
+      "Built components from the ground up (buttons, chips, stat cells, levels bar, pencil banner) with file variables and instance-swap slots.",
       "Modeled simulate-first flow with guardrails, probabilities, counterfactuals, and Undo.",
       "Used a Shell layout + variables (no spaghetti links): activeTab, tradingMode, banner, nearState."
     ],
@@ -199,8 +199,8 @@ const CASE_STUDIES = [
 
      resources: [
       { label: "Video: Signals → Simulate → Positions → Live Trade (hero flow)", href: "https://vimeo.com/1124281581/703d129d5a" },
-      { label: "Figma Prototype",       href: "https://www.figma.com/proto/TWAIpihUhIWRi2muQEmOSv/AI-Swing-Coach-App?node-id=1-2&t=2k8L0LPJ38Ocxqaz-1" },
-      { label: "Figma Design Source",       href: "https://www.figma.com/design/TWAIpihUhIWRi2muQEmOSv/AI-Swing-Coach-App?node-id=187-4329&t=2k8L0LPJ38Ocxqaz-1" }
+      { label: "Figma Prototype",       href: "https://www.figma.com/proto/TWAIpihUhIWRi2muQEmOSv/AI-Swing-Coach-App?node-id=92-6307&t=2k8L0LPJ38Ocxqaz-1" },
+      { label: "Figma Design Source",       href: "https://www.figma.com/design/TWAIpihUhIWRi2muQEmOSv/AI-Swing-Coach-App?node-id=92-6307&t=2k8L0LPJ38Ocxqaz-1" }
     ],
     quote: {
       text: "Guardrails + Undo let us move fast without regret; small numbers beat big charts for decisions.",
