@@ -198,7 +198,7 @@ const CASE_STUDIES = [
     ],
 
      resources: [
-      { label: "Video: Signals → Simulate → Positions → Live Trade (hero flow)", href: "https://vimeo.com/1124281581/703d129d5a" },
+      { label: "Video: Signals → Simulate → Positions → Live Trade (hero flow)", href: "https://vimeo.com/1124683385/5503bbdf97" },
       { label: "Figma Prototype",       href: "https://www.figma.com/proto/TWAIpihUhIWRi2muQEmOSv/AI-Swing-Coach-App?node-id=92-6307&t=2k8L0LPJ38Ocxqaz-1" },
       { label: "Figma Design Source",       href: "https://www.figma.com/design/TWAIpihUhIWRi2muQEmOSv/AI-Swing-Coach-App?node-id=92-6307&t=2k8L0LPJ38Ocxqaz-1" }
     ],
