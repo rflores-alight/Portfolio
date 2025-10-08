@@ -217,67 +217,125 @@ const PROJECTS = [
 // === Case Studies (story-first) ===
 const CASE_STUDIES = [
   {
-    slug: "ai-swing-coach",
-    title: "AI Swing Coach — simulate-first mobile trading with guardrails",
-    subtitle: "AI UX • Mobile • Trading",
-    summary:
-      "A 5-screen iOS prototype that helps swing traders act quickly and safely with simulate-first flows, explainability, and undo. Built in 5 days (Figma Make → refactor → DS). Builds upon my ML automation platform: TradingView → AWS → Alpaca case study.",
-    tags: ["AI UX", "Mobile", "Trading", "Design Systems", "A11y"],
-    hero: "/case-studies/ai-swing-coach/hero.png",
+  slug: "ai-swing-coach",
+  title: "AI Swing Coach — mobile trading",
+  subtitle: "AI UX • Mobile • Trading",
+  summary:
+    "A 5-screen iOS prototype that helps swing traders act quickly and safely with simulate-first flows, explainability, and undo. Built in 5 days (Figma Make → refactor → DS). Validated during a Design Sprint and tested on Maze.",
+  tags: ["AI UX", "Mobile", "Trading", "Design Systems", "A11y"],
+  hero: "/case-studies/ai-swing-coach/hero.png",
 
-    context: {
-      role: "Product Designer",
-      team: "Individual Contributor (IC) - paired with mock data",
-      timeframe: "5 days",
-      constraints: [
-        "TV → ML → Broker automation concept",
-        "iOS patterns, light/dark, a11y targets (44pt, contrast)",
-        "Prototype without real brokerage access"
-      ]
-    },
-
-    problem:
-      "Swing traders face noisy signals and risky execution. They need fast, explainable guidance with guardrails and reversibility, not big charts and guesswork.",
-
-    approach: [
-      "Ideated with Figma Make prompts, then refactored to Gestalt and Tufte principles (maximize data-ink).",
-      "Built components from the ground up (buttons, chips, stat cells, levels bar, pencil banner) with file variables and instance-swap slots.",
-      "Modeled simulate-first flow with guardrails, probabilities, counterfactuals, and Undo.",
-      "Used a Shell layout + variables (no spaghetti links): activeTab, tradingMode, banner, nearState."
-    ],
-
-    built: [
-      "Screens: Signals, Positions, Alerts, Activity + Settings (Paper/Live, margin cap, model health).",
-      "Simulate sheet: TL;DR plan, guardrails with one-tap fixes, thin levels bar (SL·Entry·Now·TP), RR(entry·now), TP/SL probability ranges, ATR sensitivity, playbooks.",
-      "Positions cards with stateful CTAs (Near TP/SL), rules preview (Move SL→BE, Trail), and inline success banner with Undo.",
-      "Alert feedback loop (Late / Off-target / Noisy) and prioritization rationale.",
-      "Design system tokens: 12pt radius, 44–48pt targets, tabular figures, semantic colors, light/dark."
-    ],
-
-    metrics: [
-      { label: "Mode switch errors (Paper↔Live)", before: "—", after: "0 (guarded sheet)" },
-      { label: "Undo availability on critical actions", before: "—", after: "100% coverage" },
-      { label: "Guardrail coverage on risky actions", before: "—", after: "≥ 90% coverage" }, 
-      { label: "Prototype link count (spaghetti → variables)", before: "—", after: "−80–90%" },
-      { label: "Component reuse ratio (instances:masters)", before: "—", after: "≥ 12:1" }
-    ],
-
-     resources: [
-      { label: "Video: Signals → Simulate → Positions → Live Trade (hero flow)", href: "https://vimeo.com/1124683385/5503bbdf97" },
-      { label: "Figma Prototype",       href: "https://www.figma.com/proto/TWAIpihUhIWRi2muQEmOSv/AI-Swing-Coach-App?node-id=92-6307&t=2k8L0LPJ38Ocxqaz-1" },
-      { label: "Figma Design Source",       href: "https://www.figma.com/design/TWAIpihUhIWRi2muQEmOSv/AI-Swing-Coach-App?node-id=92-6307&t=2k8L0LPJ38Ocxqaz-1" }
-    ],
-    quote: {
-      text: "Guardrails + Undo let us move fast without regret; small numbers beat big charts for decisions.",
-      author: "Product Design Notes"
-    },
-
-    lessons: [
-      "Variables > spaghetti links for prototyping complex apps.",
-      "Explainability (drivers, ranges, counterfactuals) increases trust more than new charts.",
-      "Simulate-first with immediate Undo reduces risk while keeping speed."
+  context: {
+    role: "Product Designer",
+    team: "IC (paired with mock data)",
+    timeframe: "5 days (+ 1 day test/iterate)",
+    constraints: [
+      "TV → ML → Broker automation concept",
+      "iOS patterns, light/dark, a11y targets (44pt, contrast)",
+      "Prototype without real brokerage access"
     ]
   },
+
+  problem:
+    "Swing traders face noisy signals and risky execution. They need fast, explainable guidance with guardrails and reversibility—not big charts and guesswork.",
+
+  design_sprint: {
+    framing: "Design Sprint",
+    test_platform: "Maze (unmoderated)",
+    participants: "n=7",
+    goals: [
+      "Can users recognize a high-probability signal and simulate it?",
+      "Is Paper↔Live switching safe, clear, and confidence-building?",
+      "Which cues drive decisions most (charts vs concise metrics/explainers)?"
+    ],
+    key_findings: [
+      "Mode switching was straightforward (8.6/10) and live-execution confidence was high (8.4/10).",
+      "Signals: uncertainty judging 'probability' and interpreting % partial TPs; request to show $ alongside %.",
+      "Mini-charts/history praised; users leaned on gain/loss and recent change.",
+      "Prototype hiccups (occasional freezes) undermined confidence in a few flows."
+    ],
+    changes_shipped: [
+      "Global '% ↔ $' toggle across Signals, Simulate, Positions.",
+      "One-line 'Why this signal' explainer with optional expand.",
+      "Card decision row: 'Uptrend • ATR stop $X • Risk ≈ 0.8R • Next action'.",
+      "Live confirm sheet: biometric default + optional 'Type YES', explicit est. cost + risk note.",
+      "Top-bar alerts badge + 'Attention' filter in Positions."
+    ],
+    next_experiments: [
+      "A/B: default % vs default $ (metric: time to simulate).",
+      "A/B: one-line vs expandable rationale (metrics: confidence, error rate).",
+      "Reliability gate: pre-test sanity pass to remove freezes.",
+      "Recruitment balance: add novice cohort to offset experienced-user skew."
+    ]
+  },
+
+  approach: [
+    // Empathize → Define
+    "Framed the problem with trader workflows, constraints, and success signals (speed, safety, explainability).",
+    // Hypothesize
+    "Defined hypotheses: simulate-first reduces risk; $ next to % shortens decision time; one-line rationale increases confidence.",
+    // Prototype
+    "Prototyped fast in Figma Make, then refactored to DS primitives + variables (shell, tokens, slots).",
+    // Test
+    "Tested unmoderated on Maze (n=7) with tasks across Signals → Simulate → Positions → Live switch.",
+    // Iterate
+    "Shipped changes from findings and queued A/Bs (default $ vs %, rationale depth) for the next loop."
+  ],
+    
+
+  built: [
+    "Five core screens: Signals, Positions, Alerts, Activity, Settings.",
+    "Simulate-first flow with guardrails and instant Undo.",
+    "Mode switch confirm: biometric by default + optional type-to-confirm.",
+    "Global % ↔ $ preference applied across decisions.",
+    "Lightweight 'Why this signal' explainer (expandable).",
+    "Alerts surfaced with an 'Attention' triage filter."
+  ],
+
+  study_results: [
+    { label: "Ease of Paper↔Live switching", value: "8.6/10 (n=7)" },
+    { label: "Confidence order executes live", value: "8.4/10 (n=7)" },
+    { label: "Likelihood to use", value: "8/10; 100% would use regularly (directional; small n)" },
+    { label: "Top decision cues", value: "Gain/Loss, recent change, mini-charts/history" },
+    { label: "Clarity gaps surfaced", value: "Need $ with %, clearer 'Why this signal', prototype reliability" }
+  ],
+
+  metrics: [
+    // Perception & confidence (from Design Sprint)
+    { label: "Paper↔Live switching (ease, perceived)", before: "—", after: "8.6/10 (n=7)" },
+    { label: "Live execution confidence (perceived)",   before: "—", after: "8.4/10 (n=7)" },
+
+    // Decision clarity & friction
+    { label: "Decision friction at partial exits",      before: "Higher with % only", after: "Reduced by adding $ next to %" },
+    { label: "Signal comprehension at a glance",        before: "Too technical / ambiguous", after: "1-line 'Why this signal' + metrics row" },
+
+    // Guardrails & reversibility
+    { label: "Mode switch errors (Paper↔Live)",         before: "—", after: "0 in test (guarded confirm sheet)" }
+  ],
+
+  resources: [
+    { label: "Video: Signals → Simulate → Positions → Live Trade (hero flow)", href: "https://vimeo.com/1124683385/5503bbdf97" },
+    { label: "Figma Prototype", href: "https://www.figma.com/proto/TWAIpihUhIWRi2muQEmOSv/AI-Swing-Coach-App?node-id=92-6307&t=2k8L0LPJ38Ocxqaz-1" },
+    { label: "Figma Design Source", href: "https://www.figma.com/design/TWAIpihUhIWRi2muQEmOSv/AI-Swing-Coach-App?node-id=92-6307&t=2k8L0LPJ38Ocxqaz-1" }
+  ],
+
+  quote: {
+    text: "Guardrails + Undo let us move fast without regret; small numbers beat big charts for decisions.",
+    author: "Product Design Notes"
+  },
+
+  lessons: [
+    "Simulate-first + Undo = fast, safe decisions.",
+    "Show $ alongside % to reduce friction.",
+    "One-line rationale builds confidence; expand for depth.",
+    "Concise metrics + mini-charts outperform big charts.",
+    "Design with variables/primitives, not spaghetti links.",
+    "Strong Live confirm (biometric + fallback) prevents errors.",
+    "Surface alerts / “Needs attention” to drive action.",
+    "Add a reliability gate before user testing.",
+    "Iterate with A/Bs (default $, rationale depth)."
+  ]
+},
 
   {
     slug: "wealth-ds-ops",
@@ -613,6 +671,68 @@ const CaseStudyModal = ({ cs, onClose }) => {
           <h4 className="font-semibold">Problem</h4>
           <p className="text-sm text-muted-foreground mt-1">{cs.problem}</p>
         </div>
+
+        {/* Design Sprint */}
+        {cs.design_sprint ? (
+          <div className="mt-6">
+            <h4 className="font-semibold">Design Sprint</h4>
+
+            {/* Quick facts */}
+            <div className="mt-2 grid sm:grid-cols-3 gap-3">
+              {cs.design_sprint.framing && (
+                <Kpi label="Framing" after={cs.design_sprint.framing} />
+              )}
+              {cs.design_sprint.test_platform && (
+                <Kpi label="Test Platform" after={cs.design_sprint.test_platform} />
+              )}
+              {cs.design_sprint.participants && (
+                <Kpi label="Participants" after={cs.design_sprint.participants} />
+              )}
+            </div>
+
+            {/* Goals */}
+            {cs.design_sprint.goals?.length ? (
+              <div className="mt-4">
+                <div className="text-sm font-medium">Goals</div>
+                <ul className="text-sm text-muted-foreground mt-1 list-disc pl-5 space-y-1">
+                  {cs.design_sprint.goals.map((g, i) => <li key={i}>{g}</li>)}
+                </ul>
+              </div>
+            ) : null}
+
+            {/* Key findings */}
+            {cs.design_sprint.key_findings?.length ? (
+              <div className="mt-4">
+                <div className="text-sm font-medium">Key Findings</div>
+                <ul className="text-sm text-muted-foreground mt-1 list-disc pl-5 space-y-1">
+                  {cs.design_sprint.key_findings.map((f, i) => <li key={i}>{f}</li>)}
+                </ul>
+              </div>
+            ) : null}
+
+            {/* Changes shipped & Next experiments side-by-side on wide screens */}
+            {(cs.design_sprint.changes_shipped?.length || cs.design_sprint.next_experiments?.length) ? (
+              <div className="mt-4 grid sm:grid-cols-2 gap-6">
+                {cs.design_sprint.changes_shipped?.length ? (
+                  <div>
+                    <div className="text-sm font-medium">Changes Shipped</div>
+                    <ul className="text-sm text-muted-foreground mt-1 list-disc pl-5 space-y-1">
+                      {cs.design_sprint.changes_shipped.map((c, i) => <li key={i}>{c}</li>)}
+                    </ul>
+                  </div>
+                ) : null}
+                {cs.design_sprint.next_experiments?.length ? (
+                  <div>
+                    <div className="text-sm font-medium">Next Experiments</div>
+                    <ul className="text-sm text-muted-foreground mt-1 list-disc pl-5 space-y-1">
+                      {cs.design_sprint.next_experiments.map((n, i) => <li key={i}>{n}</li>)}
+                    </ul>
+                  </div>
+                ) : null}
+              </div>
+            ) : null}
+          </div>
+        ) : null}
 
         {/* Approach */}
         <div className="mt-6">
