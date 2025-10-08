@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
-import { Mail, Download, ShieldCheck, Layers, Sparkles, Cpu, Briefcase, Calendar, Lightbulb, X, Linkedin} from "lucide-react";
+import { Mail, Download, ShieldCheck, Layers, Sparkles, Cpu, Briefcase, Calendar, Lightbulb, X, Linkedin, TrendingUp, Users2, BrainCircuit, MonitorSmartphone} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Pill } from "@/components/ui/pill";
@@ -27,35 +27,100 @@ function SafeImage({ src, alt, className }) {
 // === Generic Portfolio Content (Wealth • Health • Design Systems • A11y • Content) ===
 const PROFILE = {
   name: "Rafael Flores",
-  title: "Director of Product Design",
-  subtitle: "AI, Platforms & Design Systems",
+  title: "Product Designer & Design Leader",
+  subtitle: "Build systems. Ship products. Human-centered AI.",
   email: "ralf.flores@gmail.com",
   linkedin: "https://www.linkedin.com/in/flashflores/",
   summary: (
     <>
-      I lead teams that turn complex, regulated workflows into trustworthy, measurable experiences across Web/iOS/Android. I’ve merged legacy systems, embedded accessibility and content standards, and used AI to raise craft without slowing teams - <strong>late-stage defects ↓50%</strong>, <strong>design→dev lead time ↓30%</strong>, <strong>component adoption ~50%</strong>. Current work spans AI-assisted quality tooling (drift detection, linting, internal DS chatbot) and DS modernization (tokens/Variables, release trains).
+      I’m a product designer and design leader who found UX at a professional audio company—and it hooked me. Since starting my HCI master’s at DePaul, I’ve spent 12+ years blending design, engineering, and product to ship Web/iOS/Android experiences in regulated spaces (health, wealth/fintech, insurance). I’ve worked as an IC and as a manager/director, helping startups and Fortune 500s modernize how they design and deliver.
+      <p></p><br></br>
+      I build and evolve design systems, unify legacy workflows, and embed accessibility and content standards so teams move faster with more confidence. Recently I’ve focused on AI-assisted quality tooling and system modernization. In parallel, I design AI-native product experiences—model-in-the-loop workflows that keep humans in control—with an emphasis on explainability, uncertainty cues (not false certainty), accessible summaries before detail, and safe fallbacks.
+      <p></p><br></br>
+      <b>TL;DR:</b> Hands-on designer with director-level range. I balance craft and systems thinking to turn complex, high-stakes workflows into clear, trustworthy products—with thoughtful, human-centered AI. My path is intentionally diverse, and I wouldn’t have done it any other way.
+      <br></br>
     </>
   ),
   highlights: [
-    { label: "Designers coached", value: "20" },
-    { label: "Late‑stage defects", value: "↓ 50%" },
-    { label: "DS component adoption", value: "~50%" },
-    { label: "Design→Dev lead time", value: "↓ 30%" },
-    { label: "Research cadence", value: ["2", "studies/quarter"] },
+    // IMPACT
+    {
+      label: "Quality & Velocity",
+      icon: <TrendingUp className="h-5 w-5" />,
+      caption: "reduced issues • faster handoffs",
+      tone: "good",
+    },
+    {
+      label: "Coaching & Team Health",
+      icon: <Users2 className="h-5 w-5" />,
+      caption: "mentorship • research cadence",
+      tone: "info",
+    },
+
+    // FOCUS
+    {
+      label: "AI-Native UX",
+      icon: <BrainCircuit className="h-5 w-5" />,
+      caption: "explainability • uncertainty cues • safe fallbacks",
+      tone: "info",
+    },
+    {
+      label: "Platforms",
+      icon: <MonitorSmartphone className="h-5 w-5" />,
+      caption: "Web • iOS • Android parity via DS",
+      tone: "info",
+    },
   ],
 };
 
-const CORE_STRENGTHS = [
-  "Team leadership & mentorship",
-  "Mobile‑first UX (iOS/Android/Web)",
-  "Design Systems (tokens/Variables, versioning/deprecation, release trains)",
-  "Figma ↔ Storybook ↔ Zeroheight • CI/visual regression",
-  "Accessibility (WCAG 2.1/2.2) & privacy‑by‑design",
-  "Content design & governance (voice/tone, microcopy, release notes)",
-  "Wealth & Health domain patterns (money movement, statements; clinical/member flows)",
-  "Experimentation & analytics (A/B tests, quant + qual)",
-  "Research ops & centralized repository",
-  "AI‑assisted design ops (drift detection, linting plugins, dev chatbot)",
+export const CORE_GROUPS = [
+  {
+    title: "Systems & Scale",
+    items: [
+      "Design systems & theming (Tokens/Variables)",
+      "Multi-brand, versioning/deprecation, release trains",
+      "Platform parity: Web • iOS • Android",
+    ],
+  },
+  {
+    title: "AI & Quality",
+    items: [
+      "AI-native UX: explainability, uncertainty cues, fallbacks",
+      "AI design ops: drift detection, linting, eval harnesses",
+      "Prompt/policy ops and telemetry for model health",
+    ],
+  },
+  {
+    title: "Accessibility & Content",
+    items: [
+      "WCAG 2.2+ and semantic structure",
+      "Privacy-by-design & inclusive copy standards",
+      "Content governance: voice/tone, microcopy, release notes",
+    ],
+  },
+  {
+    title: "Design→Code Pipeline",
+    items: [
+      "Figma ↔ Storybook ↔ Zeroheight sync",
+      "CI/visual regression & component stewardship",
+      "Pattern libraries and adoption playbooks",
+    ],
+  },
+  {
+    title: "Research & Measurement",
+    items: [
+      "Study cadence; quant + qual synthesis",
+      "A/B tests & telemetry for outcomes",
+      "Centralized repo and lightweight ops",
+    ],
+  },
+  {
+    title: "Regulated Domains & Leadership",
+    items: [
+      "Fintech: money movement, statements",
+      "Healthcare: member/clinical workflows",
+      "Team leadership, coaching, quality gates",
+    ],
+  },
 ];
 
 const EXPERIENCE = [
@@ -669,26 +734,52 @@ const Section = ({ id, title, subtitle, icon, children }) => (
   </section>
 );
 
-const Metric = ({ value, label }) => {
+const Metric = ({ value, label, icon, caption, tone }) => {
   const isTuple = Array.isArray(value);
+
+  const toneCls =
+    tone === "good"
+      ? "bg-emerald-50 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-300"
+      : tone === "warn"
+      ? "bg-amber-50 text-amber-700 dark:bg-amber-900/30 dark:text-amber-300"
+      : tone === "info"
+      ? "bg-sky-50 text-sky-700 dark:bg-sky-900/30 dark:text-sky-300"
+      : "bg-muted text-foreground/90";
+
   return (
     <Card className="rounded-2xl shadow-sm">
-      <CardContent className="p-6">
-        {isTuple ? (
-          <>
-            <div className="text-4xl font-semibold leading-tight">{value[0]}</div>
-            <div className="text-2xl font-semibold leading-tight md:whitespace-nowrap">
-              {value[1]}
-            </div>
-          </>
+      <CardContent className="p-6 flex items-center gap-4">
+        {icon ? (
+          <div className={`shrink-0 h-12 w-12 rounded-xl grid place-items-center ${toneCls}`} aria-hidden>
+            {/* ensure icon has h-5 w-5 or similar */}
+            {icon}
+          </div>
         ) : (
-          <div className="text-3xl font-semibold mb-1">{value}</div>
+          <div className="shrink-0">
+            {isTuple ? (
+              <>
+                <div className="text-4xl font-semibold leading-tight">{value[0]}</div>
+                <div className="text-2xl font-semibold leading-tight md:whitespace-nowrap">
+                  {value[1]}
+                </div>
+              </>
+            ) : (
+              <div className="text-3xl font-semibold leading-none">{value}</div>
+            )}
+          </div>
         )}
-        <div className="text-sm text-muted-foreground">{label}</div>
+
+        <div className="min-w-0">
+          <div className="text-sm font-medium leading-tight">{label}</div>
+          {caption ? (
+            <div className="text-xs text-muted-foreground mt-0.5">{caption}</div>
+          ) : null}
+        </div>
       </CardContent>
     </Card>
   );
 };
+
 
 const RoleChip = ({ title, sub, className = "" }) => (
   <>
@@ -897,7 +988,7 @@ export default function Portfolio() {
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-4 mt-8">
             {PROFILE.highlights.map((m) => (
-              <Metric key={m.label} value={m.value} label={m.label} />
+              <Metric key={m.label} {...m} />
             ))}
           </div>
         </section>
@@ -905,13 +996,16 @@ export default function Portfolio() {
         <Separator />
         
         {/* Core Strengths */}
-        <Section id="strengths" title="Core Strengths" icon={<Sparkles className="text-primary" /> }>
+        <Section id="strengths" title="Core Strengths" icon={<Sparkles className="text-primary" />}>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-            {CORE_STRENGTHS.map((s) => (
-              <Card key={s} className="rounded-2xl shadow-sm">
-                <CardContent className="p-5 text-sm leading-relaxed">
-                  <ul className="list-disc list-outside pl-5 marker:text-primary">
-                    <li className="pl-1 break-words">{s}</li>
+            {CORE_GROUPS.map((g) => (
+              <Card key={g.title} className="rounded-2xl shadow-sm">
+                <CardContent className="p-5">
+                  <div className="text-sm font-semibold mb-2">{g.title}</div>
+                  <ul className="list-disc list-outside pl-5 marker:text-primary text-sm leading-relaxed">
+                    {g.items.map((it) => (
+                      <li key={it} className="pl-1 break-words">{it}</li>
+                    ))}
                   </ul>
                 </CardContent>
               </Card>
@@ -1024,8 +1118,8 @@ export default function Portfolio() {
             <Card className="rounded-2xl shadow-sm">
               <CardContent className="p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                 <div>
-                  <div className="text-lg font-semibold">Let’s build simple, trustworthy experiences in wealth & health.</div>
-                  <p className="text-sm text-muted-foreground">Open to Director/Sr Director roles • Remote (Americas/ET)</p>
+                  <div className="text-lg font-semibold">Let’s build simple, trustworthy experiences.</div>
+                  <p className="text-sm text-muted-foreground">Open to IC, Manager, or Director roles. • Remote (Americas/ET)</p>
                 </div>
                 <div className="flex gap-2">
                   <Button asChild>
