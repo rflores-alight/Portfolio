@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
 import { BookOpen, Mail, Download, ShieldCheck, Layers, Sparkles, Cpu, Briefcase, Calendar, Lightbulb, X, Linkedin, TrendingUp, Users2, BrainCircuit, MonitorSmartphone} from "lucide-react";
 import { Button } from "@/components/ui/button";
+import Glow from "@/components/ui/glow";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Pill } from "@/components/ui/pill";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
@@ -33,7 +34,7 @@ const PROFILE = {
   linkedin: "https://www.linkedin.com/in/flashflores/",
   summary: (
     <>
-      I’m a product designer and design leader who found UX at a professional audio company—and it hooked me. Since starting my HCI master’s at DePaul, I’ve spent 12+ years blending design, engineering, and product to ship Web/iOS/Android experiences in regulated spaces (health, wealth/fintech, insurance). I’ve worked as an IC and as a manager/director, helping startups and Fortune 500s modernize how they design and deliver.
+      Hey, there. I’m a product designer and design leader who found UX at a professional audio company—and it hooked me. Since starting my HCI master’s at DePaul, I’ve spent 12+ years blending design, engineering, and product to ship Web/iOS/Android experiences in regulated spaces (health, wealth/fintech, insurance). I’ve worked as an IC and as a manager/director, helping startups and Fortune 500s modernize how they design and deliver.
       <p></p><br></br>
       I build and evolve design systems, unify legacy workflows, and embed accessibility and content standards so teams move faster with more confidence. Recently I’ve focused on AI-assisted quality tooling and system modernization. In parallel, I design AI-native product experiences—model-in-the-loop workflows that keep humans in control—with an emphasis on explainability, uncertainty cues (not false certainty), accessible summaries before detail, and safe fallbacks.
       <p></p><br></br>
@@ -851,22 +852,30 @@ const CaseStudyModal = ({ cs, onClose }) => {
   </div>
 );
 };
+
+const ensureSizedIcon = (node) => {
+  // If caller already wrapped with <Glow>, render as-is (don’t clone/override)
+  if (React.isValidElement(node) && (node.type?.displayName === "Glow")) {
+    return node;
+  }
+  // If caller passed a raw icon, add sizing/class without touching parent wrappers
+  if (React.isValidElement(node)) {
+    return React.cloneElement(node, {
+      className: ["h-7 w-7 text-primary", node.props.className].filter(Boolean).join(" "),
+    });
+  }
+  return node;
+};
+
 const Section = ({ id, title, subtitle, icon, children }) => (
   <section id={id} className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
     <div className="flex items-start gap-3 mb-6">
-      {/* Icon wrapper keeps a consistent size + subtle vertical nudge */}
       <div className="shrink-0 mt-0.5">
-        {React.cloneElement(icon, { className: "h-7 w-7 text-primary" })}
+        {ensureSizedIcon(icon)}
       </div>
       <div>
-        <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight leading-tight">
-          {title}
-        </h2>
-        {subtitle && (
-          <p className="text-sm sm:text-base text-muted-foreground mt-0.5">
-            {subtitle}
-          </p>
-        )}
+        <h2 className="text-2xl sm:text-3xl font-semibold tracking-tight leading-tight">{title}</h2>
+        {subtitle ? <p className="text-sm text-muted-foreground mt-1">{subtitle}</p> : null}
       </div>
     </div>
     {children}
@@ -1084,7 +1093,9 @@ export default function Portfolio() {
       <header className="sticky top-0 z-30 bg-background/70 backdrop-blur border-b">
         <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <Layers className="text-primary" />
+            <Glow>
+              <Layers className="text-indigo-600" />
+            </Glow>
             <span className="font-semibold">{PROFILE.name}</span>
           </div>
           <div className="flex items-center gap-2">
@@ -1106,12 +1117,12 @@ export default function Portfolio() {
         {/* Intro */}
         <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
           <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}>
-            <h1 className="text-3xl sm:text-5xl font-bold tracking-tight leading-tight">
+            <h1 className="mt-1 text-2xl sm:text-3xl font-bold tracking-tight leading-tight">
               {PROFILE.title}
             </h1>
 
             {PROFILE.subtitle && (
-              <div className="text-xl sm:text-2xl font-semibold tracking-tight mt-1 sm:mt-2 text-foreground">
+              <div className="text-xl sm:text-2xl font-semibold tracking-tight mt-1.5 sm:mt-2 text-foreground">
                 {PROFILE.subtitle}
               </div>
             )}
@@ -1135,7 +1146,7 @@ export default function Portfolio() {
         <Separator />
         
         {/* Core Strengths */}
-        <Section id="strengths" title="Core Strengths" icon={<Sparkles className="text-primary" />}>
+        <Section id="strengths" title="Core Strengths" icon={<Glow><Sparkles className="h-6 w-6 text-indigo-600" aria-hidden="true" /></Glow>}>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
             {CORE_GROUPS.map((g) => (
               <Card key={g.title} className="rounded-2xl shadow-sm">
@@ -1153,13 +1164,48 @@ export default function Portfolio() {
         </Section>
 
         <Separator />
+        
+        {/* Case Studies */}
+      <Section
+          id="case-studies"
+          title="Case Studies"
+          subtitle="Deeper dives into Wealth, Health, Design Systems, A11y & Content"
+          icon={<Glow><Lightbulb className="h-6 w-6 text-indigo-600" aria-hidden="true" /></Glow>}
+        >
+        <div className="grid md:grid-cols-2 gap-5">
+          {CASE_STUDIES.map(cs => (
+            <CaseStudyCard
+              key={cs.slug}
+              cs={cs}
+              onOpenModal={openCaseStudy}
+            />
+          ))}
+        </div>
+        </Section>
+      
+        {/* Lightbox + Modal mounts */}
+        <LightboxModal open={lightbox.open} src={lightbox.src} alt={lightbox.alt} onClose={closeAsset} />
+        {activeCS && <CaseStudyModal cs={activeCS} onClose={closeCaseStudy} />}
+        
+         <Separator />
+
+        {/* Experience */}
+        <Section id="experience" title="Experience" icon={<Glow><Briefcase className="h-6 w-6 text-indigo-600" aria-hidden="true" /></Glow> }>
+          <div className="grid lg:grid-cols-2 gap-5">
+            {EXPERIENCE.map((item) => (
+              <ExperienceCard key={item.company} item={item} />
+            ))}
+          </div>
+        </Section>
+        
+        <Separator />
 
         {/* Projects */}
         <Section 
           id="projects" 
-          title="Selected Projects" 
+          title="Other Projects" 
           subtitle="Wealth • Health • Systems • A11y • Content"
-          icon={<Cpu className="text-primary" /> }>
+          icon={<Glow><Cpu className="h-6 w-6 text-indigo-600" aria-hidden="true" /></Glow>}>
           <Tabs defaultValue="all" tone="blue" className="w-full">
             <TabsList>
               <TabsTrigger value="all">All</TabsTrigger>
@@ -1215,45 +1261,10 @@ export default function Portfolio() {
         </Section>
 
         <Separator />
-        
-        {/* Case Studies */}
-      <Section
-          id="case-studies"
-          title="Case Studies"
-          subtitle="Deeper dives into Wealth, Health, Design Systems, A11y & Content"
-          icon={<Lightbulb className="text-primary" />}
-        >
-        <div className="grid md:grid-cols-2 gap-5">
-          {CASE_STUDIES.map(cs => (
-            <CaseStudyCard
-              key={cs.slug}
-              cs={cs}
-              onOpenModal={openCaseStudy}
-            />
-          ))}
-        </div>
-        </Section>
-      
-        {/* Lightbox + Modal mounts */}
-        <LightboxModal open={lightbox.open} src={lightbox.src} alt={lightbox.alt} onClose={closeAsset} />
-        {activeCS && <CaseStudyModal cs={activeCS} onClose={closeCaseStudy} />}
-        
-         <Separator />
-
-        {/* Experience */}
-        <Section id="experience" title="Experience" icon={<Briefcase className="text-primary" /> }>
-          <div className="grid lg:grid-cols-2 gap-5">
-            {EXPERIENCE.map((item) => (
-              <ExperienceCard key={item.company} item={item} />
-            ))}
-          </div>
-        </Section>
-
-        <Separator />
-
+            
         <footer className="rf-container py-10 text-sm text-gray-600">
           {/* Contact / Footer */}
-          <Section id="contact" title="Get in touch" icon={<Mail className="text-primary" /> }>
+          <Section id="contact" title="Get in touch" icon={<Glow><Mail className="h-6 w-6 text-indigo-600" aria-hidden="true" /></Glow> }>
             <Card className="rounded-2xl shadow-sm">
               <CardContent className="p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                 <div>
