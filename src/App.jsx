@@ -34,7 +34,7 @@ const PROFILE = {
   linkedin: "https://www.linkedin.com/in/flashflores/",
   summary: (
     <>
-      Hey, there. I’m a product designer and design leader who found UX at a professional audio company—and it hooked me. Since starting my HCI master’s at DePaul, I’ve spent 12+ years blending design, engineering, and product to ship Web/iOS/Android experiences in regulated spaces (health, wealth/fintech, insurance). I’ve worked as an IC and as a manager/director, helping startups and Fortune 500s modernize how they design and deliver.
+      Hey, there. I’m a product designer and design leader who found UX at a professional audio company—and it hooked me. Since starting my HCI master’s at DePaul, I’ve spent 15+ years blending design, engineering, and product to ship Web/iOS/Android experiences in regulated spaces (health, wealth/fintech, insurance). I’ve worked as an IC and as a manager/director, helping startups and Fortune 500s modernize how they design and deliver.
       <p></p><br></br>
       I build and evolve design systems, unify legacy workflows, and embed accessibility and content standards so teams move faster with more confidence. Recently I’ve focused on AI-assisted quality tooling and system modernization. In parallel, I design AI-native product experiences—model-in-the-loop workflows that keep humans in control—with an emphasis on explainability, uncertainty cues (not false certainty), accessible summaries before detail, and safe fallbacks.
       <p></p><br></br>
