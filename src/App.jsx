@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
-import { Mail, Download, ShieldCheck, Layers, Sparkles, Cpu, Briefcase, Calendar, Lightbulb, X, Linkedin, TrendingUp, Users2, BrainCircuit, MonitorSmartphone} from "lucide-react";
+import { BookOpen, Mail, Download, ShieldCheck, Layers, Sparkles, Cpu, Briefcase, Calendar, Lightbulb, X, Linkedin, TrendingUp, Users2, BrainCircuit, MonitorSmartphone} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Pill } from "@/components/ui/pill";
@@ -600,6 +600,7 @@ const CaseStudyCard = ({ cs, onOpenModal }) => (
         className="cursor-pointer"
         onClick={() => onOpenModal(cs)}
       >
+        <BookOpen className="h-4 w-4" aria-hidden="true" />
         Read case study
       </Button>
     </CardContent>
