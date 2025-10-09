@@ -27,7 +27,7 @@ function SafeImage({ src, alt, className }) {
 
 // === Generic Portfolio Content (Wealth • Health • Design Systems • A11y • Content) ===
 const PROFILE = {
-  name: "Rafael Flores",
+  name: "RAFAEL FLORES",
   title: "Product Designer & Design Leader",
   subtitle: "Build systems. Ship products. Human-centered AI.",
   email: "ralf.flores@gmail.com",
@@ -219,7 +219,7 @@ const PROJECTS = [
 const CASE_STUDIES = [
   {
   slug: "ai-swing-coach",
-  title: "AI Swing Coach — mobile trading",
+  title: "AI Swing Coach: Mobile Trading",
   subtitle: "AI UX • Mobile • Trading",
   summary:
     "A 5-screen iOS prototype that helps swing traders act quickly and safely with simulate-first flows, explainability, and undo. Built in 5 days (Figma Make → refactor → DS). Validated during a Design Sprint and tested on Maze.",
@@ -1094,9 +1094,9 @@ export default function Portfolio() {
         <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <Glow>
-              <Layers className="text-indigo-600" />
+              <Layers className="text-zinc-900 dark:text-zinc-100" />
             </Glow>
-            <span className="font-semibold">{PROFILE.name}</span>
+            <span className="font-semibold ">{PROFILE.name}</span>
           </div>
           <div className="flex items-center gap-2">
             <Button variant="secondary" asChild>   {/* light pill */}
@@ -1146,7 +1146,7 @@ export default function Portfolio() {
         <Separator />
         
         {/* Core Strengths */}
-        <Section id="strengths" title="Core Strengths" icon={<Glow><Sparkles className="h-6 w-6 text-indigo-600" aria-hidden="true" /></Glow>}>
+        <Section id="strengths" title="Core Strengths" icon={<Glow><Sparkles className="h-6 w-6 text-zinc-900 dark:text-zinc-100" aria-hidden="true" /></Glow>}>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
             {CORE_GROUPS.map((g) => (
               <Card key={g.title} className="rounded-2xl shadow-sm">
@@ -1170,7 +1170,7 @@ export default function Portfolio() {
           id="case-studies"
           title="Case Studies"
           subtitle="Deeper dives into Wealth, Health, Design Systems, A11y & Content"
-          icon={<Glow><Lightbulb className="h-6 w-6 text-indigo-600" aria-hidden="true" /></Glow>}
+          icon={<Glow><Lightbulb className="h-6 w-6 text-zinc-900 dark:text-zinc-100" aria-hidden="true" /></Glow>}
         >
         <div className="grid md:grid-cols-2 gap-5">
           {CASE_STUDIES.map(cs => (
@@ -1190,7 +1190,7 @@ export default function Portfolio() {
          <Separator />
 
         {/* Experience */}
-        <Section id="experience" title="Experience" icon={<Glow><Briefcase className="h-6 w-6 text-indigo-600" aria-hidden="true" /></Glow> }>
+        <Section id="experience" title="Experience" icon={<Glow><Briefcase className="h-6 w-6 text-zinc-900 dark:text-zinc-100" aria-hidden="true" /></Glow> }>
           <div className="grid lg:grid-cols-2 gap-5">
             {EXPERIENCE.map((item) => (
               <ExperienceCard key={item.company} item={item} />
@@ -1205,7 +1205,7 @@ export default function Portfolio() {
           id="projects" 
           title="Other Projects" 
           subtitle="Wealth • Health • Systems • A11y • Content"
-          icon={<Glow><Cpu className="h-6 w-6 text-indigo-600" aria-hidden="true" /></Glow>}>
+          icon={<Glow><Cpu className="h-6 w-6 text-zinc-900 dark:text-zinc-100" aria-hidden="true" /></Glow>}>
           <Tabs defaultValue="all" tone="blue" className="w-full">
             <TabsList>
               <TabsTrigger value="all">All</TabsTrigger>
@@ -1264,7 +1264,7 @@ export default function Portfolio() {
             
         <footer className="rf-container py-10 text-sm text-gray-600">
           {/* Contact / Footer */}
-          <Section id="contact" title="Get in touch" icon={<Glow><Mail className="h-6 w-6 text-indigo-600" aria-hidden="true" /></Glow> }>
+          <Section id="contact" title="Get in touch" icon={<Glow><Mail className="h-6 w-6 text-zinc-900 dark:text-zinc-100" aria-hidden="true" /></Glow> }>
             <Card className="rounded-2xl shadow-sm">
               <CardContent className="p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                 <div>
