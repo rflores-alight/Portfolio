@@ -192,7 +192,7 @@ const PROJECTS = [
     title: "Internal Dev Chatbot",
     summary:
       "Answers component/API questions from docs & repos to unblock engineers and speed design system adoption.",
-    tags: ["AI", "Platform", "DX"],
+    tags: ["AI", "Platform", "Ops"],
   },
   {
     title: "Figma Plugin — DS Lint (AWLDS Check)",
@@ -222,13 +222,13 @@ const CASE_STUDIES = [
   subtitle: "AI UX • Mobile • Trading",
   summary:
     "A 5-screen iOS prototype that helps swing traders act quickly and safely with simulate-first flows, explainability, and undo. Built in 5 days (Figma Make → refactor → DS). Validated during a Design Sprint and tested on Maze.",
-  tags: ["AI UX", "Mobile", "Trading", "Design Systems", "A11y"],
+  tags: ["AI UX", "Design Sprint", "Fintech"],
   hero: "/case-studies/ai-swing-coach/hero.png",
 
   context: {
     role: "Product Designer",
-    team: "IC (paired with mock data)",
-    timeframe: "5 days (+ 1 day test/iterate)",
+    team: "IC (with mock data)",
+    timeframe: "5 days (+ test)",
     constraints: [
       "TV → ML → Broker automation concept",
       "iOS patterns, light/dark, a11y targets (44pt, contrast)",
@@ -340,10 +340,10 @@ const CASE_STUDIES = [
   {
     slug: "wealth-ds-ops",
     title: "Cutting late-stage defects with Design System guardrails",
-    subtitle: "Wealth • Design Systems • A11y",
+    subtitle: "BenAdmin • Design Systems • A11y",
     summary:
       "We reduced late-stage defects ~50% in a regulated benadmin platform by instrumenting DS guardrails, a11y, and a sprint cadence.",
-    tags: ["Wealth", "Design Systems", "A11y"],
+    tags: ["BenAdmin", "Design Systems", "A11y"],
     hero: "/case-studies/wealth-hero.png", // put images in /public/case-studies
     context: {
       role: "Director, Product Design",
@@ -393,7 +393,7 @@ const CASE_STUDIES = [
     subtitle: "Wealth • Automation • Ops",
     summary:
       "Serverless webhooks + job runner with simulate/paper/live modes, feature flags, kill-switch, audit logs, and alerting—operational guardrails for finance workflows.",
-    tags: ["Wealth", "Automation", "Ops"],
+    tags: ["Fintech", "Automation", "Ops"],
     hero: "/case-studies/automation-hero.png",
     context: {
       role: "Product Design Director / Builder",
@@ -580,10 +580,17 @@ const Kpi = ({ label, after }) => (
 
 // A teaser card for each case study
 const CaseStudyCard = ({ cs, onOpenModal }) => (
-  <Card className="rounded-2xl shadow-sm h-full">
+  <Card className="rounded-2xl shadow-sm h-full hover:shadow-md transition-shadow">
     <CardHeader>
       <CardTitle className="text-base">{cs.title}</CardTitle>
       <p className="text-sm text-muted-foreground mt-1">{cs.summary}</p>
+      {Array.isArray(cs.tags) && cs.tags.length > 0 && (
+        <div className="flex gap-2 flex-wrap mt-3">
+          {cs.tags.map((t) => (
+            <Pill key={t} variant="outline" size="sm">{t}</Pill>
+          ))}
+        </div>
+      )}
     </CardHeader>
 
     <CardContent>
@@ -643,12 +650,23 @@ const CaseStudyModal = ({ cs, onClose }) => {
             variant="ghost"
             size="icon"
             onClick={onClose}
-            aria-label="Close case study dialog"
-            className="rounded-full ring-1 ring-foreground/10 hover:ring-foreground/20 cursor-pointer"
+            aria-label="Close"
+            className="
+              rounded-full
+              text-zinc-500 hover:text-zinc-800
+              hover:bg-zinc-100
+              dark:text-zinc-400 dark:hover:text-zinc-100
+              dark:hover:bg-zinc-800
+              focus-visible:outline-none
+              focus-visible:ring-2
+              focus-visible:ring-zinc-300 dark:focus-visible:ring-zinc-700
+              cursor-pointer
+            "
           >
             <X className="h-5 w-5" aria-hidden="true" />
-            <span className="sr-only">Close</span>Close
+            <span className="sr-only">Close</span>
           </Button>
+
         </div>
 
         {cs.hero ? (
