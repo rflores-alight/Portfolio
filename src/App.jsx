@@ -50,13 +50,13 @@ const PROFILE = {
     // IMPACT
     {
       label: "Quality & Velocity",
-      icon: <TrendingUp className="h-5 w-5" />,
+      icon: <TrendingUp className="h-5 w-5 text-current" />,
       caption: "reduced issues • faster handoffs",
       tone: "good",
     },
     {
       label: "Coaching & Team Health",
-      icon: <Users2 className="h-5 w-5" />,
+      icon: <Users2 className="h-5 w-5 text-current" />,
       caption: "mentorship • research cadence",
       tone: "info",
     },
@@ -64,13 +64,13 @@ const PROFILE = {
     // FOCUS
     {
       label: "AI-Native UX",
-      icon: <BrainCircuit className="h-5 w-5" />,
+      icon: <BrainCircuit className="h-5 w-5 text-current" />,
       caption: "explainability • uncertainty cues • safe fallbacks",
       tone: "info",
     },
     {
       label: "Platforms",
-      icon: <MonitorSmartphone className="h-5 w-5" />,
+      icon: <MonitorSmartphone className="h-5 w-5 text-current" />,
       caption: "Web • iOS • Android parity via DS",
       tone: "info",
     },
@@ -233,7 +233,7 @@ function StrengthCard({ title, metric, tags, caption, proofHref, Icon }) {
       </div>
 
       {/* Icon */}
-      <div className="mb-4 text-indigo-600/90" aria-hidden="true">
+      <div className="mb-4 text-indigo-600 dark:text-indigo-300" aria-hidden="true">
         <Icon className="w-12 h-12" />
       </div>
 
@@ -261,11 +261,17 @@ function StrengthCard({ title, metric, tags, caption, proofHref, Icon }) {
 
 function Chip({ children, intent }) {
   const base =
-    "inline-flex items-center rounded-full px-2.5 py-1 text-xs font-medium";
+    "inline-flex items-center rounded-full px-2.5 py-1 text-[11px] font-semibold leading-5 border";
+
   const styles =
     intent === "metric"
-      ? "bg-emerald-50 text-emerald-700 border border-emerald-200 dark:bg-emerald-900/20 dark:text-emerald-300 dark:border-emerald-800"
-      : "bg-slate-100 text-slate-700 border border-slate-200 dark:bg-slate-800/60 dark:text-slate-200 dark:border-slate-700";
+      ? // Success badge (emerald) — stable in sRGB; dark gets translucent bg
+        "border-emerald-200 bg-emerald-50 text-emerald-700 " +
+        "dark:border-emerald-900/40 dark:bg-emerald-900/20 dark:text-emerald-300"
+      : // Neutral tag (slate)
+        "border-slate-200 bg-slate-100 text-slate-700 " +
+        "dark:border-slate-700 dark:bg-slate-800/60 dark:text-slate-200";
+
   return <span className={`${base} ${styles}`}>{children}</span>;
 }
 
