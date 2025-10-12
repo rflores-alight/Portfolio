@@ -270,8 +270,8 @@ export const CaseStudyHeader = ({ data }: { data: CaseStudyHeaderData }) => {
                     /* Add ! utilities so we win specificity against variant classes */
                     className={
                       isMetric
-                        ? "rounded-full !border-0 !bg-emerald-600/10 !text-emerald-700 hover:!bg-emerald-600/15 dark:!text-emerald-400"
-                        : "rounded-full !border-0 !bg-muted !text-foreground/70 hover:!bg-muted/80 dark:!text-foreground/80"
+                        ? "rounded-full !border-0 !bg-emerald-600/10 !text-emerald-700 hover:!bg-emerald-600/15"
+                        : "rounded-full !border-0 !bg-muted !text-foreground/70 hover:!bg-muted/80"
                     }
                   >
                     {b}

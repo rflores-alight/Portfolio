@@ -233,7 +233,7 @@ function StrengthCard({ title, metric, tags, caption, proofHref, Icon }) {
       </div>
 
       {/* Icon */}
-      <div className="mb-4 text-indigo-600 dark:text-indigo-300" aria-hidden="true">
+      <div className="mb-4 text-indigo-600" aria-hidden="true">
         <Icon className="w-12 h-12" />
       </div>
 
@@ -266,11 +266,9 @@ function Chip({ children, intent }) {
   const styles =
     intent === "metric"
       ? // Success badge (emerald) — stable in sRGB; dark gets translucent bg
-        "border-emerald-200 bg-emerald-50 text-emerald-700 " +
-        "dark:border-emerald-900/40 dark:bg-emerald-900/20 dark:text-emerald-300"
+        "border-emerald-200 bg-emerald-50 text-emerald-700 "
       : // Neutral tag (slate)
-        "border-slate-200 bg-slate-100 text-slate-700 " +
-        "dark:border-slate-700 dark:bg-slate-800/60 dark:text-slate-200";
+        "border-slate-200 bg-slate-100 text-slate-700 "
 
   return <span className={`${base} ${styles}`}>{children}</span>;
 }
@@ -453,11 +451,9 @@ const CaseStudyModal = ({ cs, onClose }) => {
               rounded-full
               text-zinc-500 hover:text-zinc-800
               hover:bg-zinc-100
-              dark:text-zinc-400 dark:hover:text-zinc-100
-              dark:hover:bg-zinc-800
               focus-visible:outline-none
               focus-visible:ring-2
-              focus-visible:ring-zinc-300 dark:focus-visible:ring-zinc-700
+              focus-visible:ring-zinc-300
               cursor-pointer
             "
           >
@@ -479,11 +475,11 @@ const Metric = ({ value, label, icon, caption, tone }) => {
 
   const toneCls =
     tone === "good"
-      ? "bg-emerald-50 text-emerald-700 dark:bg-emerald-900/30 dark:text-emerald-300"
+      ? "bg-emerald-50 text-emerald-700"
       : tone === "warn"
-      ? "bg-amber-50 text-amber-700 dark:bg-amber-900/30 dark:text-amber-300"
+      ? "bg-amber-50 text-amber-700"
       : tone === "info"
-      ? "bg-sky-50 text-sky-700 dark:bg-sky-900/30 dark:text-sky-300"
+      ? "bg-sky-50 text-sky-700"
       : "bg-muted text-foreground/90";
 
   return (
@@ -637,7 +633,7 @@ export default function Portfolio() {
           subtitle="I help teams ship faster and smarter by designing systems that connect craft, quality, and data."
           icon={
             <Glow>
-              <Sparkles className="h-6 w-6 text-zinc-900 dark:text-zinc-100" aria-hidden="true" />
+              <Sparkles className="h-6 w-6 text-zinc-900" aria-hidden="true" />
             </Glow>
           }
         >
@@ -651,7 +647,7 @@ export default function Portfolio() {
           id="case-studies"
           title="Case Studies"
           subtitle="Selected Work: From Systems to Strategy"
-          icon={<Glow><Lightbulb className="h-6 w-6 text-zinc-900 dark:text-zinc-100" aria-hidden="true" /></Glow>}
+          icon={<Glow><Lightbulb className="h-6 w-6 text-zinc-900" aria-hidden="true" /></Glow>}
         >
           <ol className="space-y-4">
             {CASE_STUDIES_NEW.slice(0, 3).map((cs) => (
@@ -669,7 +665,7 @@ export default function Portfolio() {
          <Separator />
 
         {/* Experience */}
-        <Section id="experience" title="Experience" icon={<Glow><Briefcase className="h-6 w-6 text-zinc-900 dark:text-zinc-100" aria-hidden="true" /></Glow> }>
+        <Section id="experience" title="Experience" icon={<Glow><Briefcase className="h-6 w-6 text-zinc-900" aria-hidden="true" /></Glow> }>
           {/* Impact grid: logo · title · domain · one metric · dates */}
           <ul className="divide-y divide-[color:rgba(226,232,240,.9)] bg-background">
             

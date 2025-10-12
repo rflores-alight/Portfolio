@@ -20,8 +20,7 @@ export default function CaseStudyBanner({ cs }) {
       aria-label={title}
       className="group block overflow-hidden rounded-2xl border border-zinc-200/70
                  bg-white transition hover:shadow-md focus:outline-none
-                 focus-visible:ring-2 focus-visible:ring-indigo-500
-                 dark:border-zinc-800/60 dark:bg-zinc-900/60"
+                 focus-visible:ring-2 focus-visible:ring-indigo-500"
     >
       {/* If you want consistent height, wrap with an aspect box */}
       <div className="relative aspect-[16/9] w-full">

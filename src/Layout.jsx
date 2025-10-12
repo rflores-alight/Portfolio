@@ -14,7 +14,7 @@ const SiteHeader = forwardRef(function SiteHeader(_, ref) {
         <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <Glow>
-              <Layers className="text-zinc-900 dark:text-zinc-100" />
+              <Layers className="text-zinc-900" />
             </Glow>
             <span className="font-semibold ">{PROFILE.name}</span>
           </div>
@@ -41,7 +41,7 @@ function SiteFooter() {
     <footer className="rf-container py-10 text-sm text-gray-600">
           {/* Contact / Footer */}
           <Separator />
-          <Section id="contact" title="Get in touch" icon={<Glow><Mail className="h-6 w-6 text-zinc-900 dark:text-zinc-100" aria-hidden="true" /></Glow> }>
+          <Section id="contact" title="Get in touch" icon={<Glow><Mail className="h-6 w-6 text-zinc-900" aria-hidden="true" /></Glow> }>
             <Card className="rounded-2xl shadow-sm">
               <CardContent className="p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
                 <div>
