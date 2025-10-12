@@ -312,34 +312,106 @@ function TokensDiagram({ className }) {
 }
 
 // Human-in-the-loop diagram: model ↔ reviewer with gate
-function HumanInLoopIcon({ className }) {
+function HumanInLoopIcon({ className = "" }) {
   return (
-    <svg className={className} viewBox="0 0 64 64" aria-hidden="true">
-      {/* Model */}
-      <circle cx="16" cy="20" r="8" fill="#e0e7ff" stroke="#6366f1" />
-      <text x="16" y="23" fontSize="8" textAnchor="middle" fill="#6366f1">M</text>
-      {/* Human */}
-      <circle cx="48" cy="20" r="8" fill="#dcfce7" stroke="#22c55e" />
-      <text x="48" y="23" fontSize="8" textAnchor="middle" fill="#16a34a">H</text>
-      {/* Bidirectional arrows */}
-      <path d="M24 20h16" stroke="#94a3b8" strokeWidth="2" />
-      <path d="M38 17l6 3-6 3M26 23l-6-3 6-3" fill="#94a3b8" />
-      {/* Gate */}
-      <rect x="28" y="36" width="8" height="8" rx="1.5" fill="#fef3c7" stroke="#f59e0b" />
-      <path d="M20 40h8M36 40h8" stroke="#94a3b8" strokeWidth="2" />
-      <text x="32" y="58" fontSize="7" fill="#64748b" textAnchor="middle">review gate</text>
+    <svg
+      className={className}
+      viewBox="0 0 64 64"
+      aria-hidden="true"
+      role="img"
+    >
+      {/* ===== AI (brain + circuit) ===== */}
+      <g transform="translate(6,8)">
+        {/* Outer badge */}
+        <circle
+          cx="16"
+          cy="12"
+          r="10"
+          fill="#F8FAFC"      /* slate-50/100 */
+          stroke="#334155"    /* slate-700 (charcoal) */
+          strokeWidth="1.4"
+        />
+
+        {/* Brain half (left) */}
+        <path
+          d="
+            M10 12
+            c0-2.5 1.8-4.5 4.2-4.8
+            c.2-1.8 1.7-3.2 3.5-3.2
+            c2 0 3.6 1.7 3.6 3.7
+            c1.8.3 3.2 1.9 3.2 3.8
+            c0 2-1.6 3.6-3.6 3.7
+            c-.2 1.8-1.7 3.2-3.5 3.2
+            c-1.4 0-2.7-.8-3.2-2
+            c-2.4-.3-4.2-2.3-4.2-4.8Z"
+          fill="#E5E7EB"      /* gray-200 */
+          stroke="#334155"    /* charcoal */
+          strokeWidth="1.1"
+        />
+
+        {/* Circuit half (right) */}
+        <g transform="translate(16,4)" stroke="#334155" strokeLinecap="round">
+          {/* traces */}
+          <line x1="2" y1="2"  x2="2" y2="14" strokeWidth="1.05" />
+          <line x1="2" y1="8"  x2="7.5" y2="8"  strokeWidth="1.05" />
+          <line x1="2" y1="14" x2="7.5" y2="14" strokeWidth="1.05" />
+          {/* nodes */}
+          <circle cx="2"   cy="2"  r="1.6" fill="#F8FAFC" strokeWidth=".85" />
+          <circle cx="2"   cy="8"  r="1.6" fill="#F8FAFC" strokeWidth=".85" />
+          <circle cx="2"   cy="14" r="1.6" fill="#F8FAFC" strokeWidth=".85" />
+          <circle cx="9.5" cy="8"  r="1.6" fill="#F8FAFC" strokeWidth=".85" />
+          <circle cx="9.5" cy="14" r="1.6" fill="#F8FAFC" strokeWidth=".85" />
+        </g>
+      </g>
+
+      <g transform="translate(32,8)">
+        <circle
+          cx="16"
+          cy="12"
+          r="10"
+          fill="#DBEAFE"      /* blue-100 */
+          stroke="#2563EB"    /* blue-600 */
+          strokeWidth="1.5"
+        />
+        {/* Head */}
+        <circle
+          cx="16"
+          cy="10"
+          r="3.2"
+          fill="#FFFFFF"
+          stroke="#2563EB"    /* blue-600 */
+          strokeWidth="1.2"
+        />
+        {/* Shoulders */}
+        <path
+          d="M10.5 18c1.8-3 4-4.4 5.5-4.4h.1c1.6 0 3.7 1.3 5.5 4.4"
+          fill="none"
+          stroke="#2563EB"    /* blue-600 */
+          strokeWidth="1.4"
+          strokeLinecap="round"
+        />
+      </g>
+      {/* ===== Review Gate ===== */}
+      <g>
+        <rect x="28" y="36" width="8" height="8" rx="1.6" fill="#FEF3C7" stroke="#F59E0B" />
+        <path d="M20 40h8M36 40h8" stroke="#94A3B8" strokeWidth="2" />
+        <text x="32" y="58" fontSize="7" fill="#64748B" textAnchor="middle">
+          review gate
+        </text>
+      </g>
     </svg>
   );
 }
+
 
 // A11y contrast icon: AA meter  semantic mark
 function A11yContrastIcon({ className }) {
   return (
     <svg className={className} viewBox="0 0 64 64" aria-hidden="true">
       <rect x="6" y="10" width="52" height="12" rx="6" fill="#e2e8f0" />
-      <rect x="6" y="10" width="34" height="12" rx="6" fill="#0f172a" />
-      <text x="10" y="19" fontSize="8" fill="#fff">4.5:1</text>
-      <text x="40" y="19" fontSize="8" fill="#0f172a">AA</text>
+      <rect x="6" y="10" width="24" height="12" rx="6" fill="#0f172a" />
+      <text x="10" y="19" fontSize="8" fill="#fff">AA</text>
+      <text x="35" y="19" fontSize="8" fill="#0f172a">4.5:1</text>
       {/* semantic brackets */}
       <path d="M16 36v16M48 36v16" stroke="#94a3b8" strokeWidth="2" />
       <text x="32" y="48" fontSize="7" textAnchor="middle" fill="#64748b">semantic</text>

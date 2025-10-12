@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, forwardRef } from "react";
-import { Outlet, useLocation } from "react-router-dom";
+import { Outlet, useLocation, Link } from "react-router-dom";
 import Glow from "@/components/ui/glow";
 import { Mail, Download, Layers, Linkedin} from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -12,11 +12,20 @@ const SiteHeader = forwardRef(function SiteHeader(_, ref) {
   return (
     <header ref={ref} className="border-b bg-background/80 backdrop-blur sticky top-0 z-40">
         <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <Glow>
-              <Layers className="text-zinc-900" />
-            </Glow>
-            <span className="font-semibold ">{PROFILE.name}</span>
+          <div className="flex items-center">
+            <Link
+              to="/"
+              className="group inline-flex items-center gap-3 px-2 py-1 rounded-md
+                        focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500"
+              aria-label="Go to home"
+            >
+              <Glow>
+                <Layers className="text-zinc-900 transition-colors group-hover:text-indigo-600" />
+              </Glow>
+              <span className="font-semibold transition-colors group-hover:text-indigo-700">
+                {PROFILE.name}
+              </span>
+            </Link>
           </div>
           <div className="flex items-center gap-2">
             <Button variant="secondary" asChild>   {/* light pill */}
