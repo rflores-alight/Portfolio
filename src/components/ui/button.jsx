@@ -10,7 +10,7 @@ export function Button({
   const base = 'rf-btn'
   // “ghost” maps to the light pill style you want
   const v = variant === 'secondary' ? 'secondary'
-          : variant === 'ghost'     ? 'secondary'
+          : variant === 'ghost'     ? 'ghost'
           : 'default'
 
   const classes = `${base} ${v} ${className}`
