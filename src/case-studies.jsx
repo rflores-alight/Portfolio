@@ -215,11 +215,11 @@ export const CASE_STUDIES = [
 
       artifacts: [
         
-        { title: "Transfer", image: { src: "/case-studies//bmo/2.png", alt: "Start a transfer" }, caption: "Start a transfer" },
-        { title: "Setup", image: { src: "/case-studies//bmo/3.png", alt: "Setup the transfer" }, caption: "Setup the transfer" },
-        { title: "Date picker", image: { src: "/case-studies//bmo/4.png", alt: "Datepicker" }, caption: "Choose a date" },
-        { title: "Preview", image: { src: "/case-studies//bmo/5.png", alt: "Preview" }, caption: "Preview a transfer" },
-        { title: "Success", image: { src: "/case-studies//bmo/6.png", alt: "Success" }, caption: "Success confirmation" },
+        { title: "Transfer", image: { src: "/case-studies/bmo/2.png", alt: "Start a transfer" }, caption: "Start a transfer" },
+        { title: "Setup", image: { src: "/case-studies/bmo/3.png", alt: "Setup the transfer" }, caption: "Setup the transfer" },
+        { title: "Date picker", image: { src: "/case-studies/bmo/4.png", alt: "Datepicker" }, caption: "Choose a date" },
+        { title: "Preview", image: { src: "/case-studies/bmo/5.png", alt: "Preview" }, caption: "Preview a transfer" },
+        { title: "Success", image: { src: "/case-studies/bmo/6.png", alt: "Success" }, caption: "Success confirmation" },
         
       ],
 
