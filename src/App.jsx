@@ -719,6 +719,7 @@ export default function Portfolio() {
           id="case-studies"
           title="Case Studies"
           subtitle="Selected Work: From Systems to Strategy"
+          className="scroll-mt-21 md:scroll-mt-7"
           icon={<Glow><Lightbulb className="h-6 w-6 text-zinc-900" aria-hidden="true" /></Glow>}
         >
           <ol className="space-y-4">
