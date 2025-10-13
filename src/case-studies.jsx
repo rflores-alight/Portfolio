@@ -208,7 +208,7 @@ export const CASE_STUDIES = [
                 <li>Align DS roadmap with the product backlog for predictable delivery.</li>
               </ul>
               <p className="text-sm text-gray-600">
-                <strong>Outcome (add metrics):</strong> ↓ rework, ↓ a11y rollbacks, ↑ DS adoption, faster release confidence.
+                <strong>Outcome:</strong> ↓ rework, ↓ a11y rollbacks, ↑ DS adoption, faster release confidence.
               </p>
             </>
           ),
@@ -222,7 +222,7 @@ export const CASE_STUDIES = [
                 <li>Accessibility failures clustered late in QA → rollbacks + cost overruns.</li>
               </ul>
               <p className="text-sm text-gray-600">
-                <strong>Evidence (add metrics):</strong> % of PRs flagged for DS drift, # a11y failures found in QA vs pre-commit.
+                <strong>Evidence:</strong> % of PRs flagged for DS drift, # a11y failures found in QA vs pre-commit.
               </p>
             </>
           ),
@@ -236,7 +236,7 @@ export const CASE_STUDIES = [
                 <li>Transitioned teams to agile delivery cadences aligned to the DS roadmap.</li>
               </ul>
               <p className="text-sm text-gray-600">
-                <strong>Impact (add metrics):</strong> ↑ pre-commit catches, ↓ production defects, ↓ review cycle time, ↑ DS package adoption.
+                <strong>Impact:</strong> ↑ pre-commit catches, ↓ production defects, ↓ review cycle time, ↑ DS package adoption.
               </p>
             </>
           ),
@@ -329,7 +329,7 @@ export const CASE_STUDIES = [
               <li>Establish a pragmatic <strong>DS governance model</strong> (tokens, reviews, ownership).</li>
             </ul>
             <p className="text-sm text-gray-600">
-              <strong>Outcome (add metrics):</strong> ↑ completion rate, ↑ perceived trust, ↓ support tickets, ↓ compliance defects.
+              <strong>Outcome:</strong> ↑ completion rate, ↑ perceived trust, ↓ support tickets, ↓ compliance defects.
             </p>
           </>
         ),
@@ -342,7 +342,7 @@ export const CASE_STUDIES = [
               <li>Gaps: legacy components and copy drift across platforms created friction and risk.</li>
             </ul>
             <p className="text-sm text-gray-600">
-              <strong>Evidence (add metrics):</strong> step-completion drop-offs at variance points, copy inconsistencies flagged by compliance, parity audit results.
+              <strong>Evidence:</strong> step-completion drop-offs at variance points, copy inconsistencies flagged by compliance, parity audit results.
             </p>
           </>
         ),
@@ -357,7 +357,7 @@ export const CASE_STUDIES = [
               <li>Implemented <strong>a11y + quality gates</strong> in CI (lint, visual regression, copy checks).</li>
             </ul>
             <p className="text-sm text-gray-600">
-              <strong>Impact (add metrics):</strong> ↓ copy drift, ↓ variance defects, ↑ DS adoption, ↑ first-pass compliance clearance.
+              <strong>Impact:</strong> ↓ copy drift, ↓ variance defects, ↑ DS adoption, ↑ first-pass compliance clearance.
             </p>
           </>
         ),
