@@ -1,5 +1,6 @@
 import React from "react";
 import { Button } from "@/components/ui/button";
+import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import {
   PlayCircle,
   ExternalLink,
@@ -16,6 +17,19 @@ import {
   Users,
   Gauge,
 } from "lucide-react";
+
+function RenderMaybeHtml({ value }) {
+  if (value == null) return null;
+  if (typeof value === "string") {
+    return (
+      <div
+        className="prose prose-sm dark:prose-invert max-w-none"
+        dangerouslySetInnerHTML={{ __html: value }}
+      />
+    );
+  }
+  return value; // already JSX/ReactNode
+}
 
 // --- Move your data here (copy from App.jsx) ---
 export const CASE_STUDIES = [
@@ -77,17 +91,51 @@ export const CASE_STUDIES = [
         process: {
           sprint: (
             <>
-              Goals: recognize high-probability signals → simulate-first; safe Paper↔Live; which cues drive decisions more (charts vs concise metrics). Platform: Maze (unmoderated), n=7.
+              <h4 className="mt-0">Goals:</h4>
+              <ul>
+                <li>Recognize high-probability signals → simulate-first.</li>
+                <li>Safe Paper ↔ Live handoff.</li>
+                <li>Identify which cues drive decisions more (charts vs. concise metrics).</li>
+              </ul>
+
+              <h4>Platform:</h4>
+              <ul>
+                <li>Maze (unmoderated), n = 7.</li>
+              </ul>
             </>
           ),
+
           findings: (
-            <>Mode switching straightforward (8.6/10); confidence high (8.4/10). Gaps: need $ alongside %, clearer rationale, reliability hiccups.</>
+            <>
+              <ul>
+                <li>Mode switching ease: <strong>8.6/10</strong>.</li>
+                <li>Decision confidence: <strong>8.4/10</strong>.</li>
+                <li>Gaps: show <strong>$ alongside %</strong>, add <strong>one-line rationale</strong>, address <strong>reliability hiccups</strong>.</li>
+              </ul>
+            </>
           ),
+
           changes: (
-            <>Global $↔% toggle; one-line rationale with expand; decision row with risk; live confirm sheet (biometric + fallback); attention triage.</>
+            <>
+              <ul>
+                <li>Global <strong>$ ↔ %</strong> toggle.</li>
+                <li>One-line rationale with “expand for detail”.</li>
+                <li>Decision row with explicit risk indicator.</li>
+                <li>Live confirm sheet (biometric + fallback).</li>
+                <li>Attention triage (focus users on highest-impact cues).</li>
+              </ul>
+            </>
           ),
+
           experiments: (
-            <>A/B default $ vs %; A/B rationale depth; reliability gate pre-test; diversify participants (add novice cohort).</>
+            <>
+              <ul>
+                <li>A/B: default state (<strong>$ vs. %</strong>).</li>
+                <li>A/B: rationale depth (one-line vs. expanded default).</li>
+                <li>Reliability gate pre-test before exposing Live.</li>
+                <li>Diversify participants: add novice cohort.</li>
+              </ul>
+            </>
           ),
         },
       },
@@ -152,22 +200,58 @@ export const CASE_STUDIES = [
         process: {
           sprint: (
             <>
-              Goals: consolidate legacy DS assets → enforce CI + a11y guardrails → reduce rework and defect rates → align DS roadmap with product backlog.
+              <h4 className="mt-0">Goal (Design System Modernization):</h4>
+              <ul>
+                <li>Consolidate legacy DS assets into one source of truth.</li>
+                <li>Enforce CI + accessibility guardrails to prevent regressions.</li>
+                <li>Reduce rework and defect rates across product teams.</li>
+                <li>Align DS roadmap with the product backlog for predictable delivery.</li>
+              </ul>
+              <p className="text-sm text-gray-600">
+                <strong>Outcome (add metrics):</strong> ↓ rework, ↓ a11y rollbacks, ↑ DS adoption, faster release confidence.
+              </p>
             </>
           ),
+
           findings: (
             <>
-              Audit revealed inconsistent component use and missing documentation. Accessibility failures clustered late in QA, causing rollbacks and cost overruns.
+              <h4 className="mt-0">What We Discovered:</h4>
+              <ul>
+                <li>Inconsistent component usage; gaps and drift across teams.</li>
+                <li>Missing/dated documentation slowed onboarding and reviews.</li>
+                <li>Accessibility failures clustered late in QA → rollbacks + cost overruns.</li>
+              </ul>
+              <p className="text-sm text-gray-600">
+                <strong>Evidence (add metrics):</strong> % of PRs flagged for DS drift, # a11y failures found in QA vs pre-commit.
+              </p>
             </>
           ),
+
           changes: (
             <>
-              Built AWLDS with version control, migration guides, and CI gates. Added automated lint checks, Slack reporting, and visual regression tests. Transitioned team to agile delivery.
+              <h4 className="mt-0">What We Shipped:</h4>
+              <ul>
+                <li>Built <strong>AWLDS</strong> with versioned packages and migration guides.</li>
+                <li>Added CI gates: automated lint checks, visual regression tests, Slack reporting.</li>
+                <li>Transitioned teams to agile delivery cadences aligned to the DS roadmap.</li>
+              </ul>
+              <p className="text-sm text-gray-600">
+                <strong>Impact (add metrics):</strong> ↑ pre-commit catches, ↓ production defects, ↓ review cycle time, ↑ DS package adoption.
+              </p>
             </>
           ),
+
           experiments: (
             <>
-              Tested automated drift detection vs manual audits; validated defect rate improvements quarterly; monitored adoption through CI logs and dashboard analytics.
+              <h4 className="mt-0">How We Validated:</h4>
+              <ul>
+                <li>Automated <strong>drift detection</strong> vs. manual audits (compare precision/recall + time saved).</li>
+                <li>Quarterly <strong>defect-rate</strong> tracking to verify guardrail efficacy.</li>
+                <li>Adoption monitoring via <strong>CI logs + dashboard analytics</strong> (install/use over time).</li>
+              </ul>
+              <p className="text-sm text-gray-600">
+                <strong>Decision rule examples:</strong> promote guardrails if drift-caught pre-merge &gt; X% and post-release defects &lt; Y%.
+              </p>
             </>
           ),
         },
@@ -238,22 +322,57 @@ export const CASE_STUDIES = [
       process: {
         sprint: (
           <>
-            Goals: align trust-critical content and pattern consistency → define North Star for money movement → establish DS governance model.
+            <h4 className="mt-0">Goals:</h4>
+            <ul>
+              <li>Align trust-critical content and pattern consistency across surfaces.</li>
+              <li>Define the <strong>North Star</strong> experience for money movement.</li>
+              <li>Establish a pragmatic <strong>DS governance model</strong> (tokens, reviews, ownership).</li>
+            </ul>
+            <p className="text-sm text-gray-600">
+              <strong>Outcome (add metrics):</strong> ↑ completion rate, ↑ perceived trust, ↓ support tickets, ↓ compliance defects.
+            </p>
           </>
         ),
+
         findings: (
           <>
-            Users trusted consistent, transparent steps; compliance and copy clarity reduced anxiety. Gaps: legacy components and copy drift across platforms.
+            <h4 className="mt-0">What We Learned:</h4>
+            <ul>
+              <li>Users trusted consistent, transparent steps; clear compliance copy reduced anxiety.</li>
+              <li>Gaps: legacy components and copy drift across platforms created friction and risk.</li>
+            </ul>
+            <p className="text-sm text-gray-600">
+              <strong>Evidence (add metrics):</strong> step-completion drop-offs at variance points, copy inconsistencies flagged by compliance, parity audit results.
+            </p>
           </>
         ),
+
         changes: (
           <>
-            Unified money-movement flows; established token-based DS rules; codified content standards; implemented accessibility and quality gates.
+            <h4 className="mt-0">What We Shipped:</h4>
+            <ul>
+              <li>Unified <strong>money-movement flows</strong> with shared decision points and disclosures.</li>
+              <li>Established <strong>token-based DS rules</strong> (semantic tokens → component APIs).</li>
+              <li>Codified <strong>content standards</strong> for disclosures, tone, and error states.</li>
+              <li>Implemented <strong>a11y + quality gates</strong> in CI (lint, visual regression, copy checks).</li>
+            </ul>
+            <p className="text-sm text-gray-600">
+              <strong>Impact (add metrics):</strong> ↓ copy drift, ↓ variance defects, ↑ DS adoption, ↑ first-pass compliance clearance.
+            </p>
           </>
         ),
+
         experiments: (
           <>
-            Piloted cross-platform pattern parity audits; tested disclosure vs no-disclosure variants; monitored app-rating and DS adoption metrics.
+            <h4 className="mt-0">How We Validated:</h4>
+            <ul>
+              <li>Piloted cross-platform <strong>pattern-parity audits</strong> (web, iOS, Android).</li>
+              <li>Tested <strong>disclosure vs. no-disclosure</strong> variants (trust/understanding vs. friction).</li>
+              <li>Monitored <strong>app ratings</strong> and <strong>DS adoption</strong> in dashboards/CI logs.</li>
+            </ul>
+            <p className="text-sm text-gray-600">
+              <strong>Decision rules:</strong> ship parity patterns when completion ↑ ≥ X% and trust score ↑ ≥ Y% with no a11y regressions.
+            </p>
           </>
         ),
       },
@@ -397,6 +516,79 @@ export const CASE_STUDIES = [
   
 ];
 
+function ProcessTabs({ process }) {
+  const { sprint, findings, changes, experiments } = process || {};
+  // Nothing to render if no panes exist
+  if (!sprint && !findings && !changes && !experiments) return null;
+
+  // Set a sensible default tab
+  const defaultValue =
+    (sprint && "sprint") ||
+    (findings && "findings") ||
+    (changes && "changes") ||
+    "experiments";
+
+  return (
+    <div className="mt-10">
+      <div className="mb-2">
+        <h3 className="text-lg font-semibold">
+          Process <span className="text-muted-foreground">(Optional Deep Dive)</span>
+        </h3>
+      </div>
+      <Tabs defaultValue={defaultValue} className="w-full">
+        <TabsList className="flex flex-wrap gap-1">
+          {sprint && <TabsTrigger value="sprint">Design Sprint</TabsTrigger>}
+          {findings && <TabsTrigger value="findings">Findings</TabsTrigger>}
+          {changes && <TabsTrigger value="changes">Changes Shipped</TabsTrigger>}
+          {experiments && (
+            <TabsTrigger value="experiments">Next Experiments</TabsTrigger>
+          )}
+        </TabsList>
+
+        {sprint && (
+          <TabsContent value="sprint" className={`process-pane ${paneCls}`}>
+            {sprint}
+          </TabsContent>
+        )}
+        {findings && (
+          <TabsContent value="findings" className={`process-pane ${paneCls}`}>
+            {findings}
+          </TabsContent>
+        )}
+        {changes && (
+          <TabsContent value="changes" className={`process-pane ${paneCls}`}>
+            {changes}
+          </TabsContent>
+        )}
+        {experiments && (
+          <TabsContent value="experiments" className={`process-pane ${paneCls}`}>
+            {experiments}
+          </TabsContent>
+        )}
+        {/* Scoped styles (work in any React env; not Next.js-specific) */}
+        <style
+          dangerouslySetInnerHTML={{
+            __html: `
+              .process-pane ul{
+                list-style: disc !important;
+                padding-left: 1.25rem !important; /* pl-5 */
+                margin: 0.25rem 0 0.5rem !important;
+              }
+              .process-pane ol{
+                list-style: decimal !important;
+                padding-left: 1.25rem !important;
+                margin: 0.25rem 0 0.5rem !important;
+              }
+              .process-pane li{ margin-top: 0.25rem !important; }
+              .process-pane h4{ margin-top: 0 !important; font-weight: 600; font-size: 1rem; }
+            `,
+          }}
+        />
+      </Tabs>
+    </div>
+  );
+}
+
 export function Kpi({ label, before, after, delta }) {
   return (
     <div className="rounded-lg p-3 ring-1 ring-foreground/10 bg-muted/10">
@@ -438,9 +630,9 @@ function SafeImage({ src, alt, className }) {
 
 
 export function CaseStudyContent({ cs }) {
-  const validArtifacts = (cs.artifacts || []).filter(
-    (a) => typeof a.src === "string" && a.src.trim() !== ""
-  );
+  const validArtifacts = (cs.artifacts || [])
+    .map(a => (a?.image?.src ? { src: a.image.src, caption: a.caption } : a))
+    .filter(a => typeof a?.src === "string" && a.src.trim() !== "");
   return (
     <>
       {cs.hero ? (
@@ -461,6 +653,11 @@ export function CaseStudyContent({ cs }) {
         <h4 className="font-semibold">Problem</h4>
         <p className="text-sm text-muted-foreground mt-1">{cs.problem}</p>
       </div>
+
+      {/* Process (new data model) */}
+      {cs.process ? (
+        <ProcessTabs key={`process-${cs.slug}`} process={cs.process} />
+      ) : null}
 
       {cs.design_sprint ? (
         <div className="mt-6">
@@ -576,6 +773,11 @@ export function CaseStudyContent({ cs }) {
   );
 }
 
+const paneCls = [
+  "pt-4 text-sm leading-6 text-foreground/90",
+  "[&_p]:text-muted-foreground"
+].join(" ");
+ 
 //Add a generic mapper → new component data model (JS-safe)
 function toNewCaseStudyModel(cs) {
   // --- helpers ---

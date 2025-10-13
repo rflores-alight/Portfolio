@@ -234,7 +234,7 @@ export const CaseStudyHeader = ({ data }: { data: CaseStudyHeaderData }) => {
     <section id="overview" className="relative mx-auto w-full max-w-6xl px-4 pt-10 sm:px-6 lg:px-8">
       <div className="grid grid-cols-1 gap-6 lg:grid-cols-12">
         <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.5 }} className="lg:col-span-7">
-          <div className="aspect-[16/9] w-full overflow-hidden rounded-2xl border bg-muted/40 shadow-sm">
+          <div className="aspect-[16/9] w-full overflow-hidden rounded-2xl bg-muted/40 shadow-sm">
             {hero.type === "image" ? (
               <img src={hero.src} alt={hero.alt} className="h-full w-full object-cover" />
             ) : (
@@ -385,7 +385,7 @@ export const ArtifactsGallery = ({ items }: { items: Artifact[] }) => (
               >
                 <div
                   className={[
-                    "relative w-full overflow-hidden rounded-xl border bg-white",
+                    "relative w-full overflow-hidden rounded-xl bg-white",
                     aspectClass,
                   ].join(" ")}
                 >
