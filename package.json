@@ -5,9 +5,11 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "ci:amplify": "nvm use 20 && npm ci --include=dev && npm run build",
     "prebuild": "node scripts/gen-sitemap.mjs",
     "build": "vite build",
-    "postbuild": "react-snap",
+    "snap": "react-snap --debug --timeout 120000",
+    "postbuild": "react-snap --debug --timeout 120000",
     "lint": "eslint .",
     "preview": "vite preview"
   },
@@ -43,16 +45,22 @@
   },
   "reactSnap": {
     "source": "dist",
-    "inlineCss": true,
+    "inlineCss": false,
     "skipThirdPartyRequests": true,
+    "concurrency": 1,
+    "crawl": false,
     "puppeteerArgs": [
-      "--no-sandbox"
-    ],
+     "--no-sandbox",
+     "--disable-setuid-sandbox",
+     "--disable-gpu",
+     "--no-zygote",
+     "--single-process"
+   ],
     "include": [
       "/",
       "/lite/",
       "/case-studies/ai-swing-coach-mobile-trading",
-     "/case-studies/cutting-late-stage-defects-with-design-system-guardrails"
+      "/case-studies/cutting-late-stage-defects-with-design-system-guardrails"
     ]
   }
 }
