@@ -1,0 +1,7 @@
+{
+  "scripts": {
+    "build": "vite build && npx react-snap",
+    "postbuild": "cp -r dist/* dist", 
+    "reactSnap": { "inlineCss": true, "puppeteerArgs": ["--no-sandbox"] }
+  }
+}
