@@ -147,7 +147,7 @@ const SiteHeader = forwardRef(function SiteHeader(_, ref) {
     <header ref={ref} className="bg-white/90 backdrop-blur-sm shadow-sm sticky top-0 z-40">
       <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
         {/* Left cluster: Hamburger (mobile-only) + Brand */}
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 shrink-0">
           {/* Mobile hamburger on far left */}
           <div className="md:hidden">
             <Sheet open={menuOpen} onOpenChange={setMenuOpen}>
@@ -197,14 +197,14 @@ const SiteHeader = forwardRef(function SiteHeader(_, ref) {
                 <Layers className="text-zinc-900 transition-colors group-hover:text-indigo-600" />
               </Glow>
             </div>
-            <span className="font-semibold transition-colors group-hover:text-indigo-700">
+            <span className="font-semibold transition-colors group-hover:text-indigo-700 whitespace-nowrap">
               {PROFILE.name}
             </span>
           </Link>
         </div>
 
         {/* Desktop nav (md+) */}
-        <nav className="hidden md:flex items-center gap-6" aria-label="Primary">
+        <nav className="hidden md:flex items-center gap-6  ml-auto" aria-label="Primary">
           <Link
             to="/#case-studies"
             onClick={(e) => onHashNav(e, "case-studies")}
