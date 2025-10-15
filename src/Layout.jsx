@@ -109,7 +109,7 @@ const NAV_LINKS = [
 
 const SiteHeader = forwardRef(function SiteHeader(_, ref) {
   const baseLink =
-  "relative text-sm font-medium px-1 py-1 rounded-md transition-colors " +
+  "relative text-[16px] leading-6 font-medium px-1 py-1 rounded-md transition-colors " +
   "text-muted-foreground hover:!text-indigo-700 " +
   "focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500";
   const activeLink =
@@ -144,7 +144,10 @@ const SiteHeader = forwardRef(function SiteHeader(_, ref) {
   };
   
   return (
-    <header ref={ref} className="bg-white/90 backdrop-blur-sm shadow-sm sticky top-0 z-40">
+    <header 
+      ref={ref} 
+      className="bg-white/90 backdrop-blur-sm shadow-sm sticky top-[env(safe-area-inset-top)] z-40"
+      >
       <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
         {/* Left cluster: Hamburger (mobile-only) + Brand */}
         <div className="flex items-center gap-2 shrink-0">
@@ -204,7 +207,7 @@ const SiteHeader = forwardRef(function SiteHeader(_, ref) {
         </div>
 
         {/* Desktop nav (md+) */}
-        <nav className="hidden md:flex items-center gap-6  ml-auto" aria-label="Primary">
+        <nav className="hidden md:flex items-center gap-6 ml-auto" aria-label="Primary">
           <Link
             to="/#case-studies"
             onClick={(e) => onHashNav(e, "case-studies")}
@@ -230,7 +233,7 @@ const SiteHeader = forwardRef(function SiteHeader(_, ref) {
                 className="group text-muted-foreground transition-colors group-hover:text-indigo-700"
                 >
               <Mail className="h-4 w-4" />
-              <span>Contact</span>
+              <span className="text-[16px] leading-6 font-medium">Contact</span>
             </a>
           </Button>
 
@@ -244,7 +247,7 @@ const SiteHeader = forwardRef(function SiteHeader(_, ref) {
               className="inline-flex items-center gap-2"
             >
               <Download className="h-4 w-4" />
-              <span>Resume</span>
+              <span className="text-[16px] leading-6 font-semibold">Resume</span>
             </a>
           </Button>
         </div>
@@ -349,7 +352,7 @@ export default function Layout() {
       <SiteHeader ref={headerRef} />
       <main
         /* Pad by header height so content never hides underneath */
-        className="flex-1 outline-none pt-[var(--header-h,0px)]"
+        className="flex-1 outline-none pt-[calc(var(--header-h,0px)+env(safe-area-inset-top))]"
         tabIndex={-1}
         data-route-main
         aria-label="Main content"
