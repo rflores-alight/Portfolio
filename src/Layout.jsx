@@ -270,17 +270,12 @@ function SiteFooter() {
         <Card className="rounded-2xl shadow-sm">
           <CardContent className="p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
             <div>
-              <div className="text-lg font-semibold">Let’s build simple, trustworthy experiences.</div>
+              <div className="text-lg font-semibold">Let’s build simple, trustworthy products and experiences.</div>
               <p className="text-sm text-muted-foreground">Open to IC, Manager, or Director roles. • Remote (Americas/ET)</p>
             </div>
             <div className="flex gap-2">
-              <Button asChild>
-                <a href={`mailto:${PROFILE.email}`}>
-                  <Mail className="mr-2 h-4 w-4" /> Email Rafael
-                </a>
-              </Button>
               {/* Footer LinkedIn button (shows on all viewports) */}
-              <Button variant="secondary" size="icon" asChild>
+              <Button variant="ghost" size="icon" asChild>
                 <a
                   href={PROFILE.linkedin}
                   target="_blank"
@@ -294,6 +289,11 @@ function SiteFooter() {
               <Button variant="secondary" asChild>
                 <a href="/RafaelFlores-Resume.pdf" target="_blank" rel="noopener" aria-label="View resume (PDF)" className="inline-flex items-center gap-2">
                   <Download className="h-4 w-4" /> <span>Resume</span>
+                </a>
+              </Button>
+              <Button asChild>
+                <a href={`mailto:${PROFILE.email}`}>
+                  <Mail className="mr-2 h-4 w-4" /> Email Rafael
                 </a>
               </Button>
             </div>
