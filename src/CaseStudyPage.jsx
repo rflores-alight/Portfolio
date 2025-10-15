@@ -93,7 +93,10 @@ export default function CaseStudyPage() {
   }, [prev, next, navigate]);
 
   return (
-    <article className="mx-auto max-w-[88rem] px-4 pt-8 pb-12">
+    <article
+      key={slug}
+      className="mx-auto max-w-[88rem] px-4 pt-8 pb-12 animate-[cs-enter_260ms_ease-out]"
+    >
       {/* Keep a simple header bar for back nav if you like */}
       
       {/* TOP PAGER */}

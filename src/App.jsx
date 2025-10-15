@@ -738,7 +738,11 @@ export default function Portfolio() {
          <Separator />
 
         {/* Experience */}
-        <Section id="experience" title="Experience" icon={<Glow><Briefcase className="h-6 w-6 text-zinc-900" aria-hidden="true" /></Glow> }>
+        <Section 
+          id="experience" 
+          title="Experience"
+          className="scroll-mt-21 md:scroll-mt-7" 
+          icon={<Glow><Briefcase className="h-6 w-6 text-zinc-900" aria-hidden="true" /></Glow> }>
           {/* Impact grid: logo · title · domain · one metric · dates */}
           <ul className="divide-y divide-[color:rgba(226,232,240,.9)] bg-background">
             
