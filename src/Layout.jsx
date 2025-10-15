@@ -146,9 +146,9 @@ const SiteHeader = forwardRef(function SiteHeader(_, ref) {
   return (
     <header 
       ref={ref} 
-      className="bg-white/90 backdrop-blur-sm shadow-sm sticky top-[env(safe-area-inset-top)] z-40"
+      className="bg-white/90 backdrop-blur-sm shadow-sm sticky top-[env(safe-area-inset-top)] z-40 overflow-x-clip"
       >
-      <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between pl-[calc(env(safe-area-inset-left)+1rem)] pr-[calc(env(safe-area-inset-right)+1rem)]">
         {/* Left cluster: Hamburger (mobile-only) + Brand */}
         <div className="flex items-center gap-2 shrink-0">
           {/* Mobile hamburger on far left */}
@@ -225,7 +225,7 @@ const SiteHeader = forwardRef(function SiteHeader(_, ref) {
         </nav>
 
         {/* Actions (right) */}
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 md:gap-4">
           {/* Email */}
           <Button variant="ghost" asChild>
             <a href={`mailto:${PROFILE.email}`} 
@@ -233,7 +233,7 @@ const SiteHeader = forwardRef(function SiteHeader(_, ref) {
                 className="group text-muted-foreground transition-colors group-hover:text-indigo-700"
                 >
               <Mail className="h-4 w-4" />
-              <span className="text-[16px] leading-6 font-medium">Contact</span>
+              <span className="hidden md:inline text-[16px] leading-6 font-medium">Contact</span>
             </a>
           </Button>
 
@@ -247,7 +247,7 @@ const SiteHeader = forwardRef(function SiteHeader(_, ref) {
               className="inline-flex items-center gap-2"
             >
               <Download className="h-4 w-4" />
-              <span className="text-[16px] leading-6 font-semibold">Resume</span>
+              <span className="hidden md:inline text-[16px] leading-6 font-semibold">Resume</span>
             </a>
           </Button>
         </div>
