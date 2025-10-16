@@ -222,7 +222,7 @@ export const CASE_STUDIES = [
                 <li>Accessibility failures clustered late in QA → rollbacks + cost overruns.</li>
               </ul>
               <p className="text-sm text-gray-600">
-                <strong>Evidence:</strong> % of PRs flagged for DS drift, # a11y failures found in QA vs pre-commit.
+                <strong>Evidence:</strong> % of PRs flagged for DS drift, a11y failures found in QA.
               </p>
             </>
           ),
@@ -250,7 +250,6 @@ export const CASE_STUDIES = [
                 <li>Adoption monitoring via <strong>CI logs + dashboard analytics</strong> (install/use over time).</li>
               </ul>
               <p className="text-sm text-gray-600">
-                <strong>Decision rule examples:</strong> promote guardrails if drift-caught pre-merge &gt; X% and post-release defects &lt; Y%.
               </p>
             </>
           ),
@@ -368,10 +367,9 @@ export const CASE_STUDIES = [
             <ul>
               <li>Piloted cross-platform <strong>pattern-parity audits</strong> (web, iOS, Android).</li>
               <li>Tested <strong>disclosure vs. no-disclosure</strong> variants (trust/understanding vs. friction).</li>
-              <li>Monitored <strong>app ratings</strong> and <strong>DS adoption</strong> in dashboards/CI logs.</li>
+              <li>Monitored <strong>app ratings</strong> and <strong>DS adoption</strong> in dashboards.</li>
             </ul>
             <p className="text-sm text-gray-600">
-              <strong>Decision rules:</strong> ship parity patterns when completion ↑ ≥ X% and trust score ↑ ≥ Y% with no a11y regressions.
             </p>
           </>
         ),
