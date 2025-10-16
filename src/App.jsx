@@ -788,25 +788,22 @@ export default function Portfolio() {
             />
           </ul>
           <div className="mt-4">
-            <Button
-              asChild
-              variant="ghost"
-              className="
+            
+              <a href="/RafaelFlores-Resume.pdf" target="_blank" rel="noopener"
+                className="
                 group inline-flex items-center gap-2
-                h-auto p-0
+                h-auto p-0 mt-5
                 text-sm font-medium text-indigo-600
                 hover:text-indigo-700 hover:bg-transparent
-                focus-visible:ring-2 focus-visible:ring-indigo-500
-              "
-            >
-              <a href="/RafaelFlores-Resume.pdf" target="_blank" rel="noopener">
+                focus-visible:ring-2 focus-visible:ring-indigo-500"
+              >
                 <span>View full resume</span>
                 <ArrowRight
                   className="h-4 w-4 transition-transform translate-x-0 group-hover:translate-x-0.5"
                   aria-hidden="true"
                 />
               </a>
-            </Button>
+            
           </div>
         </Section>
         

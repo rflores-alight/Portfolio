@@ -207,49 +207,51 @@ const SiteHeader = forwardRef(function SiteHeader(_, ref) {
         </div>
 
         {/* Desktop nav (md+) */}
-        <nav className="hidden md:flex items-center gap-6 ml-auto" aria-label="Primary">
-          <Link
-            to="/#case-studies"
-            onClick={(e) => onHashNav(e, "case-studies")}
-            className={`${baseLink} ${isActive("CASE STUDIES") ? activeLink : ""}`}
-          >
-            CASE STUDIES
-          </Link>
-          <Link
-            to="/#experience"
-            onClick={(e) => onHashNav(e, "experience")}
-            className={`${baseLink} ${isActive("EXPERIENCE") ? activeLink : ""}`}
-          >
-            EXPERIENCE
-          </Link>
-        </nav>
-
-        {/* Actions (right) */}
-        <div className="flex items-center gap-2 md:gap-4">
-          {/* Email */}
-          <Button variant="ghost" asChild>
-            <a href={`mailto:${PROFILE.email}`} 
-                aria-label="Email"
-                className="group text-muted-foreground transition-colors group-hover:text-indigo-700"
-                >
-              <Mail className="h-4 w-4" />
-              <span className="hidden md:inline text-[16px] leading-6 font-medium">Contact</span>
-            </a>
-          </Button>
-
-          {/* Resume: icon + text horizontal */}
-          <Button variant="secondary" asChild>
-            <a
-              href="/RafaelFlores-Resume.pdf"
-              target="_blank"
-              rel="noopener"
-              aria-label="Download resume (PDF)"
-              className="inline-flex items-center gap-2"
+        <div className="ml-auto md:flex items-center gap-5">
+          <nav className="hidden md:flex items-center gap-6 ml-auto" aria-label="Primary">
+            <Link
+              to="/#case-studies"
+              onClick={(e) => onHashNav(e, "case-studies")}
+              className={`${baseLink} ${isActive("CASE STUDIES") ? activeLink : ""}`}
             >
-              <Download className="h-4 w-4" />
-              <span className="hidden md:inline text-[16px] leading-6 font-semibold">Resume</span>
-            </a>
-          </Button>
+              CASE STUDIES
+            </Link>
+            <Link
+              to="/#experience"
+              onClick={(e) => onHashNav(e, "experience")}
+              className={`${baseLink} ${isActive("EXPERIENCE") ? activeLink : ""}`}
+            >
+              EXPERIENCE
+            </Link>
+          </nav>
+
+          {/* Actions (right) */}
+          <div className="flex items-center gap-2 md:gap-4">
+            {/* Email */}
+            <Button variant="ghost" asChild>
+              <a href={`mailto:${PROFILE.email}`} 
+                  aria-label="Email"
+                  className="inline-flex items-center"
+                  >
+                <Mail className="h-4 w-4" />
+                <span className="hidden md:inline text-[16px] leading-6 font-medium">Contact</span>
+              </a>
+            </Button>
+
+            {/* Resume: icon + text horizontal */}
+            <Button variant="secondary" asChild>
+              <a
+                href="/RafaelFlores-Resume.pdf"
+                target="_blank"
+                rel="noopener"
+                aria-label="Download resume (PDF)"
+                className="inline-flex items-center gap-2"
+              >
+                <Download className="h-4 w-4" />
+                <span className="hidden md:inline text-[16px] leading-6 font-semibold">Resume</span>
+              </a>
+            </Button>
+          </div>
         </div>
       </div>
     </header>

@@ -456,7 +456,7 @@ export const ProcessTabs = ({ data }: { data?: ProcessTabsData }) => {
   return (
     <Section id="process" title="Process (Optional Deep Dive)" subtitle="Design Sprint → Findings → Changes → Next Experiments">
       <Tabs defaultValue={sprint ? "sprint" : findings ? "findings" : changes ? "changes" : experiments ? "experiments" : extra?.[0]?.id ?? "sprint"} className="w-full">
-        <TabsList className="rounded-xl">
+        <TabsList className="rounded-xl [&_[role=tab]]:cursor-pointer [&_[role=tab]]:hover:bg-muted/60">
           {sprint && <TabsTrigger value="sprint">Design Sprint</TabsTrigger>}
           {findings && <TabsTrigger value="findings">Findings</TabsTrigger>}
           {changes && <TabsTrigger value="changes">Changes Shipped</TabsTrigger>}
