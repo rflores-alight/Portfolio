@@ -222,7 +222,7 @@ export const CASE_STUDIES = [
                 <li>Accessibility failures clustered late in QA → rollbacks + cost overruns.</li>
               </ul>
               <p className="text-sm text-gray-600">
-                <strong>Evidence:</strong> % of PRs flagged for DS drift, a11y failures found in QA.
+                <strong>Evidence:</strong>PRs flagged for DS drift, a11y failures found in QA.
               </p>
             </>
           ),
