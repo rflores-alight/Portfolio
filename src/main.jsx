@@ -1,23 +1,29 @@
-import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
 import './index.css'
 import App from './App.jsx'
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Portfolio from "./App";
+
 import CaseStudyPage from "./CaseStudyPage";
 import Layout from "./Layout";
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import RouteChangeTracker from './RouteChangeTracker'; // your tracker file
 
-createRoot(document.getElementById("root")).render(
-  <StrictMode>
+import './index.css';
+
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <React.StrictMode>
     <BrowserRouter>
+      {/* GA route-change tracking (must be inside the Router, mounted once) */}
+      <RouteChangeTracker />
+
+      {/* Your routes */}
       <Routes>
         <Route element={<Layout />}>
-          <Route path="/" element={<Portfolio />} />
+          <Route path="/" element={<App />} />
           <Route path="/case-studies/:slug" element={<CaseStudyPage />} />
         </Route>
       </Routes>
     </BrowserRouter>
-  </StrictMode>
+  </React.StrictMode>
 );
 
-export default function Root() { return <RouterProvider router={router} />; }

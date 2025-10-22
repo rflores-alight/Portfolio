@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
-import { Link, BrowserRouter } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { BookOpen, ShieldCheck, Sparkles, Cpu, Briefcase, Lightbulb, X, Linkedin, TrendingUp, Users2, BrainCircuit, MonitorSmartphone, ArrowRight} from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -12,12 +12,6 @@ import { CASE_STUDIES_NEW, CaseStudyContent } from "./case-studies";
 import CaseStudyBanner from "./components/case-study/CaseStudyBanner";
 import { Section } from "@/components/ui/section.jsx";
 import { ExperienceGridRow } from "./components/ui/experiencegridrow";
-import RouteChangeTracker from './RouteChangeTracker';
-
-<BrowserRouter>
-  <RouteChangeTracker />
-  {/* your routes */}
-</BrowserRouter>
 
 // helper to render images with a graceful fallback
 function SafeImage({ src, alt, className }) {
