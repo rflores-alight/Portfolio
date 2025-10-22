@@ -260,12 +260,13 @@ const SiteHeader = forwardRef(function SiteHeader(_, ref) {
 
 function SiteFooter() {
   return (
-    <footer className="rf-container py-10 text-sm text-gray-600">
+    <footer className="rf-container pt-10 text-sm text-gray-600 shadow-[inset_0_1px_0_rgba(226,232,240,0.8)]">
+      
       {/* Contact / Footer */}
-      <Separator />
       <Section
         id="contact"
         title="Get in touch"
+        className="mt-8"
         icon={
           <Glow>
             <Mail className="h-6 w-6 text-zinc-900" aria-hidden="true" />
