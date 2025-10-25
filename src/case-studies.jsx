@@ -16,6 +16,7 @@ import {
   GitBranch,
   Users,
   Gauge,
+  ClipboardList,
 } from "lucide-react";
 
 function RenderMaybeHtml({ value }) {
@@ -37,14 +38,14 @@ export const CASE_STUDIES = [
     {
         header: {
           title: "AI Swing Coach: Mobile Trading",
-          subtitle: "AI UX • Fintech • Design Sprint • 5 days",
+          subtitle: "AI UX • Fintech • Design Sprint • 5 days • Framing refinement in progress (Kellogg exec-ed)",
           role: "Product Designer",
           team: "IC (mock data)",
           scope: "5 iOS screens, DS prototype",
           tldr: "Designed and validated a simulate-first mobile trading flow that builds trust through explainability and safe reversibility.",
           hero: { type: "image", src: "/case-studies/ai-swing-coach/hero.png", alt: "AI Swing Coach hero" },
           banner: { type: "image", src: "/case-studies/ai-swing-coach/banner.png", alt: "AI Swing Coach hero" },
-          badges: ["8.6/10 ease", "8.4/10 confidence", "0 switch errors"],
+          badges: ["8.6/10 ease", "8.4/10 confidence", "0 switch errors", "In progress"],
           ctas: [
             { label: "Watch Demo", href: "https://vimeo.com/1124683385/5503bbdf97", icon: <PlayCircle className="mr-2 h-4 w-4" /> },
             { label: "Figma Prototype", href: "https://www.figma.com/proto/TWAIpihUhIWRi2muQEmOSv/AI-Swing-Coach-App?node-id=92-6307&t=2k8L0LPJ38Ocxqaz-1", variant: "secondary", icon: <SquareArrowOutUpRight className="mr-2 h-4 w-4" /> },
@@ -55,12 +56,13 @@ export const CASE_STUDIES = [
           problem:
             "Swing traders face noisy signals and risky execution with low explainability, leading to hesitation or errors.",
           outcome:
-            "Built an AI-native prototype with guardrails, explainability, and undo that increased confidence (8.4/10) and eliminated mode-switch errors.",
+            "Built an AI-native prototype with guardrails, explainability, and undo that increased confidence (8.4/10) and eliminated mode-switch errors. Currently refining packaging and GTM based on a structured product-strategy framework.",
         },
         highlights: [
           { icon: Brain, label: "Human-in-the-loop AI UX", copy: "Explainable signals, simulate-first, and undo patterns to improve trust and risk control." },
           { icon: Layers, label: "Systems Design", copy: "Refactored fast prototype into DS primitives (tokens, variables) for scale and consistency." },
           { icon: Rocket, label: "Design Ops Speed", copy: "5-day sprint + unmoderated Maze test (n=7) to quickly validate hypotheses and ship fixes." },
+          
         ],
         results: [
           { label: "Ease of mode switch", value: 8.6, suffix: "/10", hint: "Guarded confirmation works", decimals: 1 },
@@ -80,6 +82,7 @@ export const CASE_STUDIES = [
           { icon: Shield, title: "Trust & Safety", copy: "Guardrails + Undo improved confidence without slowing decisions; informed later AI-native DS patterns." },
           { icon: BarChart3, title: "Measurable Quality", copy: "Metrics tied to hypotheses; created a template for tracking explainability & UX safety across teams." },
           { icon: LineChart, title: "Scalable Patterns", copy: "DS primitives + variables turned a sprint prototype into reusable, governable patterns." },
+          { icon: ClipboardList, title: "Product Framing", copy: "Discovery → UX acceptance → pricing/GTM now being formalized; updates will note deltas." },
         ],
         resources: {
           items: [
@@ -91,14 +94,21 @@ export const CASE_STUDIES = [
         process: {
           sprint: (
             <>
-              <h4 className="mt-0">Goals:</h4>
+              <b className="mt-0">Goals:</b>
               <ul>
                 <li>Recognize high-probability signals → simulate-first.</li>
                 <li>Safe Paper ↔ Live handoff.</li>
                 <li>Identify which cues drive decisions more (charts vs. concise metrics).</li>
               </ul>
 
-              <h4>Platform:</h4>
+              <b>Current status:</b>
+              <p className="text-muted-foreground">
+                Framing updates in progress using a structured product-strategy approach
+                (discovery → UX acceptance criteria → pricing/GTM). Results and artifacts
+                 will note what changed.
+              </p>
+              
+              <b>Platform:</b>
               <ul>
                 <li>Maze (unmoderated), n = 7.</li>
               </ul>
@@ -134,10 +144,15 @@ export const CASE_STUDIES = [
                 <li>A/B: rationale depth (one-line vs. expanded default).</li>
                 <li>Reliability gate pre-test before exposing Live.</li>
                 <li>Diversify participants: add novice cohort.</li>
+                <li className="text-muted-foreground">Next: pricing interviews + tiered packaging, then update store-safe copy.</li>
               </ul>
             </>
           ),
         },
+        footerNotes: [
+          // one unobtrusive line; brand mention is factual, not boastful
+          "Methods currently informed by an executive-level product strategy course; updates will reflect changes to discovery, UX acceptance, pricing, and GTM."
+        ]
       },
   
       {
