@@ -747,6 +747,16 @@ export default function Portfolio() {
           {/* Impact grid: logo · title · domain · one metric · dates */}
           <ul className="divide-y divide-[color:rgba(226,232,240,.9)] bg-background">
             
+            {/* ZS Associates */} 
+            <ExperienceGridRow 
+              logo="/logos/zs.png" 
+              company="ZS Associates" 
+              role="Senior Product Designer (UX Consultant, Contract)" 
+              context="Clinical trial & radiopharma logistics portals for Sanofi / AlphaMedix" 
+              metrics="Workflow clarity ↑ · Risk in regulated flows ↓ · Delivery speed ↑ through reusable patterns" 
+              influence="Designed end-to-end scheduling and order management experiences (dashboards, tables, side-drawers); mapped personas/JTBDs; partnered with PM/Eng and client stakeholders to translate SOPs and constraints into usable UI; created scalable components and interaction specs for build" 
+              dates="2025–2026" />
+
             {/* Alight Solutions */}
             <ExperienceGridRow
               logo="/logos/alight.png"
