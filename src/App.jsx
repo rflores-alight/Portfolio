@@ -755,7 +755,7 @@ export default function Portfolio() {
               context="Clinical trial & radiopharma logistics portals for Sanofi / AlphaMedix" 
               metrics="Workflow clarity ↑ · Risk in regulated flows ↓ · Delivery speed ↑ through reusable patterns" 
               influence="Designed end-to-end scheduling and order management experiences (dashboards, tables, side-drawers); mapped personas/JTBDs; partnered with PM/Eng and client stakeholders to translate SOPs and constraints into usable UI; created scalable components and interaction specs for build" 
-              dates="2025–2026" />
+              dates="2025–present" />
 
             {/* Alight Solutions */}
             <ExperienceGridRow
