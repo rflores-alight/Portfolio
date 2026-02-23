@@ -72,14 +72,13 @@ function Pager({ prev, next, indexInHome, total, className = "" }) {
 export default function CaseStudyPage() {
   const { slug } = useParams();
   const cs = CASE_STUDIES_NEW.find((c) => c.slug === slug); // same pattern as your old page
-  if (!cs) return <div className="mx-auto max-w-3xl px-4 py-10">Not found.</div>;
+  const navigate = useNavigate();
 
   // Top pager: only traverse the 3 featured on the homepage
   const HOME_CS = CASE_STUDIES_NEW.slice(0, 3); // must match homepage rendering
-  const indexInHome = HOME_CS.findIndex((c) => c.slug === cs.slug);
+  const indexInHome = cs ? HOME_CS.findIndex((c) => c.slug === cs.slug) : -1;
   const prev = indexInHome > 0 ? HOME_CS[indexInHome - 1] : null;
   const next = indexInHome >= 0 && indexInHome < HOME_CS.length - 1 ? HOME_CS[indexInHome + 1] : null;
-  const navigate = useNavigate();
 
   // Optional: keyboard navigation (← / →) within the trio
   useEffect(() => {
@@ -91,6 +90,8 @@ export default function CaseStudyPage() {
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
   }, [prev, next, navigate]);
+
+  if (!cs) return <div className="mx-auto max-w-3xl px-4 py-10">Not found.</div>;
 
   return (
     <article

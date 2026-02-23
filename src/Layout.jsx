@@ -6,9 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { SITE_META as PROFILE } from "./site-shared.jsx";
 import { Section } from "@/components/ui/section.jsx";
-import { Separator } from "@/components/ui/separator";
 import { Sheet, SheetTrigger, SheetContent, SheetClose } from "@/components/ui/sheet";
-import { useState } from "react"; // if not already
 
 function scrollToSection(id, behavior = "smooth") {
   const el = document.getElementById(id);

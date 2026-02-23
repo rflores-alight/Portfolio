@@ -33,6 +33,7 @@ function RenderMaybeHtml({ value }) {
 }
 
 // --- Move your data here (copy from App.jsx) ---
+// eslint-disable-next-line react-refresh/only-export-components
 export const CASE_STUDIES = [
   // ... paste the array you currently have in App.jsx ...
     {
@@ -796,7 +797,6 @@ function toNewCaseStudyModel(cs) {
   // --- helpers ---
   const first = (arr, n = 1) => (Array.isArray(arr) ? arr.slice(0, n) : []);
   const text = (v) => (typeof v === "string" ? v : "");
-  const num = (v) => (typeof v === "number" ? v : Number(v));
   const parseScore = (s) => {
     // examples: "8.6/10 (n=7)", "100%", "5 days", "↓ 50%"
     if (!s || typeof s !== "string") return { value: null, suffix: "", decimals: 0 };
@@ -821,7 +821,7 @@ function toNewCaseStudyModel(cs) {
     const sr = Array.isArray(cs.study_results) ? cs.study_results : [];
     const interesting = sr
       .map((r) => {
-        const { value, suffix, decimals } = parseScore(text(r.value));
+        const { value, suffix } = parseScore(text(r.value));
         return value != null ? `${value}${suffix ? suffix : ""} ${r.label.toLowerCase().split(" ")[0]}` : null;
       })
       .filter(Boolean);
@@ -994,4 +994,5 @@ function normalizeCaseStudy(cs) {
 //}));
 
 // Export the transformed array for your new components:
+// eslint-disable-next-line react-refresh/only-export-components
 export const CASE_STUDIES_NEW = CASE_STUDIES.map(normalizeCaseStudy);

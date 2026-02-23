@@ -77,7 +77,7 @@ const PROFILE = {
   ],
 };
 
-export const CORE_GROUPS = [
+const CORE_GROUPS = [
   {
     title: "Systems & Scale",
     items: [
@@ -234,7 +234,7 @@ function StrengthCard({ title, metric, tags, caption, proofHref, Icon }) {
 
       {/* Icon */}
       <div className="mb-4 text-indigo-600" aria-hidden="true">
-        <Icon className="w-12 h-12" />
+        {React.createElement(Icon, { className: "w-12 h-12" })}
       </div>
 
       <h3 className="text-base font-semibold text-foreground">{title}</h3>
@@ -477,10 +477,6 @@ const CaseStudyCard = ({ cs }) => {
 // Lightweight modal (no extra libs)
 const CaseStudyModal = ({ cs, onClose }) => {
   const dialogRef = useRef(null);
-  // Keep only artifacts that actually have a src
-  const validArtifacts = (cs.artifacts || []).filter(
-    a => typeof a.src === "string" && a.src.trim() !== ""
-  );
   useEffect(() => {
     // focus first focusable element
     const el = dialogRef.current;
@@ -629,9 +625,9 @@ function LightboxModal({ open, src, alt, onClose }) {
 
 export default function Portfolio() {
   const [lightbox, setLightbox] = useState({ open: false, src: "", alt: "" });
-  const openAsset  = (src, alt) => setLightbox({ open: true, src, alt });
   const closeAsset = () => setLightbox(s => ({ ...s, open: false }));
   const [activeCS, setActiveCS] = useState(null);
+  const MotionDiv = motion.div;
 
   // Optional deep link: open modal if URL has #cs=slug
   useEffect(() => {
@@ -642,14 +638,6 @@ export default function Portfolio() {
       if (match) setActiveCS(match);
     }
   }, []);
-
-  const openCaseStudy = (cs) => {
-    setActiveCS(cs);
-    document.body.style.overflow = "hidden";
-    const params = new URLSearchParams(window.location.hash.slice(1));
-    params.set("cs", cs.slug);
-    window.history.replaceState(null, "", `#${params.toString()}`);
-  };
 
   const closeCaseStudy = () => {
     setActiveCS(null);
@@ -666,7 +654,7 @@ export default function Portfolio() {
       <main className="rf-container">
         {/* Intro */}
         <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
-          <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}>
+          <MotionDiv initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}>
             <h1 className="mt-1 text-2xl sm:text-3xl font-bold tracking-tight leading-tight">
               {PROFILE.title}
             </h1>
@@ -687,7 +675,7 @@ export default function Portfolio() {
               {PROFILE.summary}
             </div>
             
-          </motion.div>
+          </MotionDiv>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-4 mt-8">
             {PROFILE.highlights.map((m) => (

@@ -1,12 +1,33 @@
-# React + Vite
+# Rafael Flores Portfolio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Live demo: https://rafaelflores.net
 
-Currently, two official plugins are available:
+## Run locally
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+1. Use Node.js 20 (`nvm use 20`).
+2. Install dependencies: `npm ci`
+3. Start dev server: `npm run dev`
+4. Open `http://localhost:5173`
 
-## Expanding the ESLint configuration
+## Useful scripts
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+- `npm run build` - production build (includes sitemap generation + react-snap step)
+- `npm run preview` - preview the production build locally
+- `npm run lint` - run ESLint checks
+
+## What this demonstrates
+
+- Production-ready React + Vite portfolio architecture.
+- Route-based case studies with reusable UI components.
+- Accessibility-minded UX (semantic structure, keyboard support, no-JS fallback).
+- Design-system-driven consistency across content-rich pages.
+
+## Screenshots
+
+![AI Swing Coach case study hero](./public/case-studies/ai-swing-coach/hero.png)
+![Alight design system case study hero](./public/case-studies/alight/alight-hero.png)
+![BMO mobile quality case study hero](./public/case-studies/bmo/bmo-hero.png)
+
+## GIF
+
+![Portfolio walkthrough GIF](./public/readme/portfolio-demo.gif)

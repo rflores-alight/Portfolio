@@ -26,12 +26,10 @@ const ensureSizedIcon = (node) => {
 const SectionImpl = (
   { id, title, subtitle, icon, as: Tag = "section", headingLevel = 2, className = "", children },
   ref
-  // eslint-disable-next-line comma-dangle
 ) => {
   const Heading = `h${headingLevel}`;
-
-  return (
-    <Tag id={id} ref={ref} className={["max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12", className].join(" ")}>
+  const content = (
+    <>
       {(title || icon) && (
         <div className="flex items-start gap-3 mb-6">
           {icon ? <div className="shrink-0 mt-0.5">{ensureSizedIcon(icon)}</div> : null}
@@ -46,7 +44,13 @@ const SectionImpl = (
         </div>
       )}
       {children}
-    </Tag>
+    </>
+  );
+
+  return React.createElement(
+    Tag,
+    { id, ref, className: ["max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12", className].join(" ") },
+    content
   );
 };
 
