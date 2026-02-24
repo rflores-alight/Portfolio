@@ -178,25 +178,11 @@ export const Section = ({
   id?: string;
 }) => (
   <section id={id} className="mx-auto w-full max-w-6xl px-4 py-10 sm:px-6 lg:px-8">
-    <div className="mb-6 flex items-end justify-between">
+    <div className="mb-6">
       <div>
         <h2 className="text-xl font-semibold tracking-tight">{title}</h2>
         {subtitle && <p className="mt-1 text-sm text-muted-foreground">{subtitle}</p>}
       </div>
-      <nav aria-label="Case study section shortcuts" className="hidden gap-2 sm:flex">
-        <a href="#overview" className="text-xs text-muted-foreground hover:text-foreground">
-          Overview
-        </a>
-        <a href="#results" className="text-xs text-muted-foreground hover:text-foreground">
-          Results
-        </a>
-        <a href="#process" className="text-xs text-muted-foreground hover:text-foreground">
-          Process
-        </a>
-        <a href="#impact" className="text-xs text-muted-foreground hover:text-foreground">
-          Learnings
-        </a>
-      </nav>
     </div>
     {children}
   </section>

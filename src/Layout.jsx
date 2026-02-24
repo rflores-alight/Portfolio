@@ -352,8 +352,7 @@ export default function Layout() {
       <ScrollToTop />
       <SiteHeader ref={headerRef} />
       <main
-        /* Pad by header height so content never hides underneath */
-        className="flex-1 outline-none pt-[calc(var(--header-h,0px)+env(safe-area-inset-top))]"
+        className="flex-1 outline-none"
         tabIndex={-1}
         data-route-main
         aria-label="Main content"

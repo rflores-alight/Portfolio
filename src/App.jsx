@@ -653,7 +653,7 @@ export default function Portfolio() {
 
       <main className="rf-container">
         {/* Intro */}
-        <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
+        <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-8 pb-14 sm:py-14">
           <MotionDiv initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4 }}>
             <h1 className="mt-1 text-2xl sm:text-3xl font-bold tracking-tight leading-tight">
               {PROFILE.title}
@@ -665,14 +665,16 @@ export default function Portfolio() {
               </div>
             )}
 
-            <div className="flex flex-wrap gap-2 mt-4">
-              <Pill variant="primary" size="sm" icon={Sparkles}>Design Systems</Pill>
-              <Pill variant="soft" size="sm" icon={Cpu}>AI Strategy</Pill>
-              <Pill variant="outline" size="sm" icon={ShieldCheck}>A11y & Content</Pill>
-            </div>
+            <div className="mt-4 flex flex-col gap-4 sm:gap-5">
+              <div className="flex flex-wrap gap-2">
+                <Pill variant="primary" size="sm" icon={Sparkles}>Design Systems</Pill>
+                <Pill variant="soft" size="sm" icon={Cpu}>AI Strategy</Pill>
+                <Pill variant="outline" size="sm" icon={ShieldCheck}>A11y & Content</Pill>
+              </div>
 
-            <div className="text-muted-foreground max-w-3xl mt-3 sm:mt-4 pt-4">
-              {PROFILE.summary}
+              <div className="text-muted-foreground max-w-3xl [&>p]:m-0">
+                {PROFILE.summary}
+              </div>
             </div>
             
           </MotionDiv>
